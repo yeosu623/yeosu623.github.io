@@ -118,13 +118,12 @@
 .sidebar-sticky {
   position: relative;
   z-index: 3;
-  scrollbar-width: none; // Test Code
 
   @media screen {
     -ms-overflow-style: none;  // IE 10+
-    scrollbar-width: none; // Firefox
+    overflow: -moz-scrollbars-none;  // Firefox
     height: 100%;
-   overflow: auto;
+    overflow: auto;
     position: absolute;
     padding: 3rem 0rem;
     right: 2.5rem;
