@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "[TEST] 새로운 포스트 작성 테스트2"
-subtitle:   "TEST for new posting2"
+title:  "[TEST] 새로운 포스트 작성 테스트22"
+subtitle:   "TEST for new posting22"
 categories: envops
 tags: envops blog github pages jekyll google adsense 
 comments: true
