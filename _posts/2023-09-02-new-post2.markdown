@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "[TEST] 새로운 포스트 작성 테스트2"
+subtitle:   "TEST for new posting2"
+categories: envops
+tags: envops blog github pages jekyll google adsense 
+comments: true
+---
+
+
+## 글 테스트
+이 글은 단순히 새로운 글이 업로드 되는지 테스트해보는 글이며, 다른 의도는 없다.
+
