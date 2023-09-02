@@ -111,6 +111,10 @@ exclude:
   - package-lock.json
   - Gemfile
   - Gemfile.lock
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 
 markdown: kramdown
 
