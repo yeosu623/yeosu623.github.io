@@ -121,8 +121,7 @@
 
   @media screen {
     -ms-overflow-style: none;  // IE 10+
-    overflow: -moz-scrollbars-none;  // Firefox(older)
-    scrollbar-width: none; // Firefox(newer)
+    overflow: -moz-scrollbars-none;  // Firefox
     height: 100%;
     overflow: auto;
     position: absolute;
