@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: EnvOps
-slug: envOps
-category: envOps
+title: Spring
+slug: spring
+category: dev
 menu: false
 order: 1
 ---
