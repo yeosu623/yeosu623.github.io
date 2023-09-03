@@ -6,5 +6,5 @@ menu: true
 submenu: false
 order: 3
 description: >
-  A history about what I and We achieved!
+  The history about what I and WE achieved!
 ---
