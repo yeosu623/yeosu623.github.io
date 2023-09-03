@@ -2,7 +2,7 @@
 #  User configuration
 # -----------------------------------------------------------------------------
 
-title:               TheoryDB
+title:               LambdaFox
 
 # The unique resource location of your page.
 # Set to `https://<username>.github.io` when hosting on GitHub Pages
@@ -10,20 +10,20 @@ url:                 https://yeosu623.github.io
 
 # Set to '' when hosting a blog on GitHub Pages, ie on `//<username>.github.io`
 # Set to '/<reponame>' when using the `gh-pages` branch of a repository
-baseurl:             ""
+baseurl:             "Welcome to my playground!"
 
 # A very short description of your page
-tagline:             "All roads lead to data."
+tagline:             ""
 
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
 description:         >
-  Data science enthusiast and addict :)
+  Life is short, and we need a COFFEE.
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:
-  name:              min
-  email:             theorydb@gmail.com
+  name:              yeosu623
+  email:             yeosu623@naver.com
 
 # Fallback image and color
 image:               /assets/img/main_left.jpg
@@ -44,14 +44,14 @@ google_fonts:        Lato
 
 # Set your Google Analytics id to receive `pageview` events.
 # To remove Google Anaylics from your page, remove the line below.
-google_analytics:    UA-137374202-1
+google_analytics:    UA-283748682-1
 
 # Setting a disqus shortname will enable the comment section on pages with `comments: true` in the front matter
-disqus: False
-# disqus_shortname:    theorydb
+disqus: false
+# disqus_shortname:    
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright:           '&copy; 2019.04. by theorydb'
+copyright:           '&copy; 2023.09 by yeosu623'
 
 # Format of the permalinks
 permalink:           pretty
