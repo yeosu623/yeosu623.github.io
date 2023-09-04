@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "The format of posts"
-subtitle: "The format of posts"
+title: "Post Testing"
+subtitle: "post testing"
 categories: dev
-tags: spring tag1 tag2 tag3
+tags: db tag1 tag2 tag3
 comments: false
 ---
 
 ## Introduction
-> 이 글에 관한 간단한 한줄 설명을 여기다가 적습니다.
+> 실전 글 테스트입니다.
   
 - Contents
 	- [Chapter1](#link-to-chapter1) 
