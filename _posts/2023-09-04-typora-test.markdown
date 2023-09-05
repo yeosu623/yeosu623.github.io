@@ -32,5 +32,5 @@ Typora는 마크다운 글을 간편하게 쓰게 해주는 프로그램이다.
 ---
 여기서는 그림을 테스트해본다.
 
-![그림](C:\Users\yeosu\Documents\GitHub\yeosu623.github.io\assets\img\post_img\2.jpg)
+![naver logo](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/6cd1a7ef-aaf8-4633-9537-d86c515f41f8)
 
