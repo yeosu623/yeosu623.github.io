@@ -41,7 +41,7 @@ After you downloaded JDK, let's write very simple the source code in nodepad. On
 public class Hello2030 {
 	public static void main(String[] args) {
 		int n = 2030;
-		System.out.println("헬로" + n);
+		System.out.println("Hello" + n);
 	}
 }
 ```
