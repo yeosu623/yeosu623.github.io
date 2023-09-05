@@ -39,11 +39,14 @@ After you downloaded JDK, let's write very simple the source code in nodepad. On
 
 ```java
 public class Hello2030 {
+
 	public static void main(String[] args) {
-		int n = 2030;
-		System.out.println("헬로" + n);
+		System.out.println("Hello");
+
 	}
+
 }
+
 ```
 
 Then execute Command Prompt, and go its directory to `Hello2030.java`. Once you done it, you can complie it by `javac Hello2030.java` and runs it by `java Hello2030`. Let's see what happened.  
