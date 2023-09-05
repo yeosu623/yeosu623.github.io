@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: DB
-slug: db
+title: Database
+slug: database
 category: dev
 menu: false
 order: 3
