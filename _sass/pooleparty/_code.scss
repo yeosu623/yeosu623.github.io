@@ -27,6 +27,9 @@ pre {
   @include pre();
 
   backface-visibility: hidden; // wat?
+
+  /* Set tab size to 4 characters wide. */
+  tab-size: 4;
 }
 
 pre code {
