@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: CS
-slug: cs
+title: Computer Vision
+slug: cv
 category: dev
 menu: false
-order: 3
+order: 7
 ---
