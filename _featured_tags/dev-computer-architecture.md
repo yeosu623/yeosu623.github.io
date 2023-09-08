@@ -4,5 +4,5 @@ title: Computer Architectrue
 slug: ca
 category: dev
 menu: false
-order: 6
+order: 8
 ---

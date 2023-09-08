@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: Computer Vision
-slug: cv
+title: Software Engineering
+slug: se
 category: dev
 menu: false
-order: 7
+order: 5
 ---

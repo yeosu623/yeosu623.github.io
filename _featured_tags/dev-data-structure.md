@@ -4,5 +4,5 @@ title: Data structure
 slug: ds
 category: dev
 menu: false
-order: 4
+order: 6
 ---
