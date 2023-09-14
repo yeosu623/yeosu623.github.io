@@ -14,6 +14,7 @@ comments: false
 	- [What is data structure and algorithm?](#what-is-data-structure-and-algorithm)
 	- [Example 1. Selecting sort](#example-1.-selecting-sort)
 	- [Example 2. Binary Search](#example-2.-binary-search)
+	- [What is ADT?](#what-is-adt)
 	- [Space Complexity and Time Complexity](#space-complexity-and-time-complexity)
 	
 ## What is data structure and algorithm?
@@ -178,11 +179,42 @@ The description for binary search is here below. Take your time slowly to try to
 
 
 
+## What is ADT?
+
+---
+
+ADT is the abstractions of features. Imagine you cook a soup for your parent. What will you do?
+
+1. Boil water in a pot.
+2. Put a corn.
+3. Stir smoothly for a long time.
+4. Add some salt and pepper to complete.
+
+Like this process, ADT is the unit of your actions. In algorithm, ADT is the unit of algorithm's features. For example in array,
+
+- Create array in desired size.
+- Retrieve values of your desired index.
+- Store values of your desired index.
+
+The exact concept of ADT should include these contents :
+
+- The aspect of algorithm : function name, types of parameters, and return type.
+- The method to call a function and explain its result.
+- Hide the process of function and implementation.
+
+
+
+The below figure is the ADT for Array. Every data structure and algorithms should be written its ADT at first, because it is easy to implement on source code level with ADT. We will see more data structures with ADT on future chapters. So don't worry now, you will become more familiar through your journey of your programmer's life.
+
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/0bfa51ac-d7d6-498e-90d0-4990df0bb68b" alt="제목 없음" style="zoom:67%;" />
+
+
+
 
 
 ## Space Complexity and Time Complexity
 ---
-These two aspects are friends with all of algorithms. Space Complexity is the consumption of memory to execute the program. But it is not the considerable aspect these days, because the size of memory is incredibly large.
+These two aspects are friends with all of algorithms. Space Complexity is the consumption of memory to execute the program. But it is not the considerable aspect these days, because the size of memory is incredibly large than 30 years ago.
 
 However, **Time Complexity** is the most important for all of algorithm, Because some algorithms could take time **EXPONENTIALLY** if you make algorithms in an in-efficient way.
 
