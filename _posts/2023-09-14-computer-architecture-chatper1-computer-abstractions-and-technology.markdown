@@ -69,7 +69,7 @@ Now, let's see how processor works.
 
 4. Next, processor fetches the next instruction from memory.
 
-So, **Control** decides which is the next instruction and decode it, also gives signals to operate datapath components. **Datapath** executes instructions (e.g. adder) and storage location.
+   So, **Control** decides which is the next instruction and decode it, also gives signals to operate datapath components. **Datapath** executes instructions (e.g. adder) and storage location.
 
 5. After the program completed, the data to be output by binary code.
 
