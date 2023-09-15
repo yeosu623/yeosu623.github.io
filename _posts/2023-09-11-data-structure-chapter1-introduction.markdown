@@ -23,7 +23,7 @@ Literally, data structure means the structure of data. To manage and make form o
 
 <img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/54b5efea-c1e6-4f22-a2c0-8ba758535c08" alt="image" style="zoom:50%;" />
 
-<center><b>Tree data structure</b></center>
+<center><b>Tree data structure</b></center><br>
 
 But, how we can get, input, and manage its data with line-by-line source code? To do that, we need to learn the detailed its data structure and learn algorithm to handle it.
 
@@ -111,7 +111,7 @@ Selecting sort is one of the simplest algorithm for sorting. This codes might be
 
 <img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/7d2e1164-8029-4587-8038-a29010beba1a" alt="image" style="zoom:50%;" />
 
-<center><b>Selecting sort</b></center>
+<center><b>Selecting sort</b></center><br>
 
 For above example, the first operation for searching do 6 times. Then the number 1 is sorted, the second operation do 5 times. then the third do 4 times, and then 3 times, 2 times, and finally, do 1 times at last. So, if you sort **n** numbers of data, the operation for searching do **k** times by this formula.
 
@@ -222,5 +222,5 @@ Basically, assignment values, add, subtract, multiple, divide and other arithmet
 
 <img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/3cb497fd-de78-4528-b49d-2fa04c7e0881" alt="image" style="zoom:50%;" />
 
-<center><b>Time Complexity of Selecting Sort.</b></center>
+<center><b>Time Complexity of Selecting Sort.</b></center><br>
 
