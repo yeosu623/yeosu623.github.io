@@ -31,7 +31,7 @@ In 1948 in Bell lab, the three historical scientists and engineers, Walter House
 
 In 1971, Intel Corp. introduce the world-first microprocessor, **Intel 4004**. Originally it would be used for electronic calculator, but they were found that it can replace existed simple micro chips. This facts made the trend for microprocessor until these days.
 
-<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/65f147de-1220-48e8-8f39-62f71279227d" alt="image" style="zoom: 50%;" />
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/65f147de-1220-48e8-8f39-62f71279227d" alt="image" style="zoom: 25%;" />
 
 <center><b>Intel 4004</b></center>
 
@@ -45,7 +45,7 @@ A microprocessor only has a chip of arithmetic operator, so you must made a circ
 
 A microcontroller contains a microprocessor with I/O pins. so you can simply use it with connect cable to other chips. Arduino is the best well-known microcontroller.
 
-<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/5adbdb44-62c2-4bd4-a10d-c9550b57be24" alt="image" style="zoom: 33%;" />
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/5adbdb44-62c2-4bd4-a10d-c9550b57be24" alt="image" style="zoom: 25%;" />
 
 <center><b>Arduino Uno</b></center>
 
@@ -55,7 +55,7 @@ A microcontroller contains a microprocessor with I/O pins. so you can simply use
 ---
 The microprocessor has complex gates and complex circuits. We will see this features one by one on future posts.
 
-<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/c79cb2ed-d334-43e4-aa03-fa2401f32262" alt="image" style="zoom: 50%;" />
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/c79cb2ed-d334-43e4-aa03-fa2401f32262" alt="image" style="zoom: 33%;" />
 
 
 
