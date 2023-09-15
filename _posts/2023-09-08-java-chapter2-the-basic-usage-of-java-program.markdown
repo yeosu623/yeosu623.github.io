@@ -91,7 +91,17 @@ Let's see how to use these types above.
   System.out.println(c);
   ```
 
+- Note that you can force to change types by writing the desired type in front of value or variable.
 
+  ```java
+  double value1 = (double)10; // save as 10.0
+  int value2 = (int)3.5; // save as 3
+  
+  double variable1 = 9.9;
+  int variable2 = (int)variable1; // save as 9
+  ```
+
+  
 
 ## Input data
 ---

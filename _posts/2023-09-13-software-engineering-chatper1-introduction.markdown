@@ -13,7 +13,7 @@ comments: false
 - Contents
 	- [What is software engineering?](#what-is-software-engineering)
 	- [Why it is needed?](#why-it-is-needed)
-	- [Chapter3](#link-to-chapter3)
+	- [4C in Software Engineering](#4c-in-software-engineering)
 	- [Chapter4](#link-to-chapter4)
 	- [Chapter5](#link-to-chapter5)
   
@@ -56,9 +56,16 @@ But, if you need to work on your team or company, you **ABSOLUTELY** don't work 
 
 
 
-## Link-to-Chapter3  
+## 4C in Software Engineering 
 ---
-Chapter3에 관한 내용을 여기다가 적습니다.  
+There are four management in software engineering.
+
+- Complexity : The software become more complex as the time pass. Today, some problem has over 373 packages and 2698 classes! So, software developer always has mindset about how can I reduce complexity, how can I manage it, and what are the methods or techniques to manage it.
+- Change : Software is evolving like a life form. Thus, changes are inevitable. So, software developers always to be adaptive for environment changes like requirements, design, people, etc.
+- Cost : According to Digital Aggregates Corporation, 67% of costs consumed during **Maintenance**, and 34% for others, from set requirements to release program. So, software developers must be concerned about Maintenance during all time on developing to reduce costs.
+- Communication : All people does not have a deep understanding within software developing. Business managers and customers usually don't care about developing, so software developers need to explain easily for them. Also, usual software in not made by one person. As they need to work as a team, so good communication skill is needed.
+
+
 
 ## Link-to-Chapter4  
 ---
