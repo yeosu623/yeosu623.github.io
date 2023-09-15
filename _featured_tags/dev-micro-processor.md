@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: Micro Processor
-slug: mp
+title: Microprocessor
+slug: microprocessor
 category: dev
 menu: false
 order: 4
