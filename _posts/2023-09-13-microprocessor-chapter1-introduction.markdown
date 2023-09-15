@@ -45,7 +45,7 @@ A microprocessor only has a chip of arithmetic operator, so you must made a circ
 
 A microcontroller contains a microprocessor with I/O pins. so you can simply use it with connect cable to other chips. Arduino is the best well-known microcontroller.
 
-<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230913121029307.png" alt="image-20230913121029307" style="zoom:50%;" />
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/5adbdb44-62c2-4bd4-a10d-c9550b57be24" alt="image" style="zoom: 33%;" />
 
 <center><b>Arduino Uno</b></center>
 
@@ -53,9 +53,9 @@ A microcontroller contains a microprocessor with I/O pins. so you can simply use
 
 ## The brief concept of microprocessor
 ---
-The microprocessor has complex gates and complex circuits like below. We will see this features one by one on future posts.
+The microprocessor has complex gates and complex circuits. We will see this features one by one on future posts.
 
-![image-20230913121349299](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230913121349299.png)
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/c79cb2ed-d334-43e4-aa03-fa2401f32262" alt="image" style="zoom: 50%;" />
 
 
 
