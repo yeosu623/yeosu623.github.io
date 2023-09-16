@@ -3,7 +3,7 @@ layout: post
 title: "[Software Engineering]Chapter1. introduction"
 subtitle: "software engineering introduction"
 categories: dev
-tags: se
+tags: softwareengineering
 comments: false
 ---
 

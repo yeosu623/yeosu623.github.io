@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[Software Engineering]Project Plan"
+title: "[SE Project]Project Plan"
 subtitle: "project plan"
 categories: project
-tags: se waterfall
+tags: seproject waterfall
 comments: false
 ---
 

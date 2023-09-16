@@ -3,7 +3,7 @@ layout: post
 title: "[Data Structure]Chapter1. Introduction"
 subtitle: "data structure introduction"
 categories: dev
-tags: ds complexity selecting binary recursion
+tags: datastructure complexity selecting binary recursion
 comments: false
 ---
 

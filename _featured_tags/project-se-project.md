@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: SE
-slug: se
+title: SE Project
+slug: seproject
 category: project
 menu: false
 order: 1

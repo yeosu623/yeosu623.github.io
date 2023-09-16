@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
 title: Software Engineering
-slug: se
+slug: softwareengineering
 category: dev
 menu: false
 order: 5

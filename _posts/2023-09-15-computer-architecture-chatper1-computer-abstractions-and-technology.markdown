@@ -3,7 +3,7 @@ layout: post
 title: "[Computer Architecture]Chapter1. Computer abstractions and technology"
 subtitle: "chapter1. computer abstractions and technology"
 categories: dev
-tags: ca
+tags: computerarchitecture
 comments: false
 ---
 

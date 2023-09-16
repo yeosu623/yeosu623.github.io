@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
 title: Computer Architectrue
-slug: ca
+slug: computerarchitecture
 category: dev
 menu: false
 order: 8
