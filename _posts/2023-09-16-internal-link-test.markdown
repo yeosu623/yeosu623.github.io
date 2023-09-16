@@ -11,13 +11,13 @@ comments: false
 > Chapter links test.
 
 - Contents
-	- [Chapter1](#chapter1.link-test-without-space)
+	- [Chapter1](#chapter1:link-test-without-space)
 	- [Chapter2](#chapter2-link-test-without-space)
-	- [Chapter3](#chapter3.-link-test-with-space)
+	- [Chapter3](#chapter3:-link-test-with-space)
 	- [Chapter4](#chapter4----link-test-with-space)
-	- [Chapter5](#chapter5.-the-combination#of@symbols.)
+	- [Chapter5](#chapter5:-the-combination#of@symbols.)
   
-## Chapter1.Link test without space
+## Chapter1:Link test without space
 ---
 Chapter1에 관한 내용을 여기다가 적습니다.    
 
@@ -25,11 +25,11 @@ Chapter1에 관한 내용을 여기다가 적습니다.
 
 ## Chapter2-Link test without space
 ---
-Chapter2에 관한 내용을 여기다가 적습니다.  
+PASSED
 
 
 
-## Chapter3. Link test with space
+## Chapter3: Link test with space
 ---
 Chapter3에 관한 내용을 여기다가 적습니다.  
 
@@ -37,10 +37,10 @@ Chapter3에 관한 내용을 여기다가 적습니다.
 
 ## Chapter4-  -Link test with space
 ---
-Chapter4에 관한 내용을 여기다가 적습니다.  
+PASSED
 
 
 
-## Chapter5. The-Combination#of@symbols.
+## Chapter5: The-Combination#of@symbols.
 ---
 Chapter5에 관한 내용을 여기다가 적습니다.  
