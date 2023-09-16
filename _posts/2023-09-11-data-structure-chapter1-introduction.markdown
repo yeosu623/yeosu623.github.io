@@ -12,8 +12,8 @@ comments: false
 
 - Contents
 	- [What is data structure and algorithm?](#what-is-data-structure-and-algorithm)
-	- [Example 1 - Selecting sort](#example-1---selecting-sort)
-	- [Example 2 - Binary Search](#example-2---binary-search)
+	- [Example 1_ Selecting sort](#example-1_-selecting-sort)
+	- [Example 2_ Binary Search](#example-2_-binary-search)
 	- [What is ADT?](#what-is-adt)
 	- [Space Complexity and Time Complexity](#space-complexity-and-time-complexity)
 	
@@ -41,7 +41,7 @@ Now, let's see some famous and well-known algorithms.
 
 
 
-## Example 1 - Selecting sort
+## Example 1_ Selecting sort
 ---
 If you need to sort n(n >=1) pieces of random numbers, how will you sort these?
 
@@ -119,7 +119,7 @@ For above example, the first operation for searching do 6 times. Then the number
 
 
 
-## Example 2 - Binary Search
+## Example 2_ Binary Search
 ---
 Let's see another famous example, the binary search algorithm.
 
