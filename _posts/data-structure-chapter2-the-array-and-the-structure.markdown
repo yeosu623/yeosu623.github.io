@@ -13,7 +13,7 @@ comments: false
 - Contents
 	- [What is Array?](#what-is-array)
 	- [What is Structure?](#what-is-structure)
-	- [What is Union?](#what-is-union)
+	- [Chapter3](#link-to-chapter3)
 	- [Chapter4](#link-to-chapter4)
 	- [Chapter5](#link-to-chapter5)
   
@@ -76,11 +76,54 @@ int main() {
 
 
 
+There are some cautions when you are use structure.
+
+- Caution 1 : Do not compose function with structure type for parameter. Use the pointer of structure type for parameter instead.
+
+  The reason is that if you give argument for structure type, the structure not only just give values for parameter but also be copied it. So, use pointer instead to give address for parameter to solve these problem.
+
+- Caution 2 : You need to consider memory alignment on structure. Structure align memory that is automatically sized based on the **multiple of the largest type size**.
+
+  So, if you compose structure like this and if your OS is recognized about int size is 4,
+  
+  ```C
+  struct A {
+      int a;
+      int b;
+      char c;
+  }
+  ```
+
+  This structure's size will not be 9, but will be 12.
+
+  Like this, if you compose like this :
+  
+  ```C
+  struct B {
+  	char a;
+      short b;
+      int c;
+  }
+  ```
+  
+  The size will be 8.
+  
+  Otherwise, if you compose like this :
+  
+  ```C
+  struct C {
+      char a;
+      double b;
+  }
+  ```
+  
+  The size will be 16.
 
 
-## What is Union?
+
+## Link-to-Chapter3
 ---
-Chapter3에 관한 내용을 여기다가 적습니다.  
+
 
 
 

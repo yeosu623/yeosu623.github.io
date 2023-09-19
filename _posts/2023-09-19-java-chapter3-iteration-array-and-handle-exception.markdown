@@ -211,4 +211,28 @@ public class ArrayWithIteration {
 
 ## Handle Exceptions
 ---
-Chapter4에 관한 내용을 여기다가 적습니다.  
+There are critical situation when the programmers make some mistakes. For the most famous example, when they divided some integer by zero, the expected result is infinity. Unfortunately, computer don't understand infinity, so it makes error and run infinitely program instead.
+
+So, JAVA makes `runtime error` when the error has made on running the program. To handle runtime error, you can use try-catch statement.
+
+For example, if you try to access array with unbounded index, JAVA makes runtime error and say "ArrayIndexOutOfBoundsException" occurred. To prevent runtime error, you can code like this :
+
+```java
+package univ_study;
+
+public class ArrayException {
+	public static void main (String[] args) {
+		int intArray[] = {1,2,3}; // make array on 3 size.
+		
+		try {
+			for (int i=0; i<5; i++) { // try to access index 0,1,2 and 3,4
+				System.out.println("intArray["+i+"]"+"="+intArray[i]);
+			}
+		}
+		catch (ArrayIndexOutOfBoundsException e) { // when this type of error occurred...
+			System.out.println("error occurred : " + e); // you can get error info by using reference variable e.
+		}
+	}
+}
+```
+
