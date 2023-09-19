@@ -12,7 +12,7 @@ comments: false
 
 - Contents
 	- [Pin Description](#pin-description)
-	- [Let's connect CPU to Memory](#let's-connect-cpu-to-memory)
+	- [Let's connect CPU to Memory](#lets-connect-cpu-to-memory)
 	- [CPU Operations](#cpu-operations)
 	
 ## Pin Description
