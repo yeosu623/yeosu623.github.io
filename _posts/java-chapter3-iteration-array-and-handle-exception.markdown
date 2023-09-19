@@ -14,9 +14,8 @@ comments: false
 	- [What is Iteration?](#what-is-iteration)
 	- [Controls in Iteration](#controls-in-iteration)
 	- [What is Array?](#what-is-array)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	- [Handle Exceptions](#handle-exceptions)
+	
 ## What is Iteration?
 ---
 Iteration makes something repeat with sequenced numbers. Imagine you need to count 1 to 100 and write it on paper. You need to write numbers one by one in real world, but computer can do that work very easily!
@@ -210,12 +209,6 @@ public class ArrayWithIteration {
 
 
 
-
-
-## Link-to-Chapter4  
+## Handle Exceptions
 ---
 Chapter4에 관한 내용을 여기다가 적습니다.  
-
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
