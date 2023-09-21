@@ -14,9 +14,8 @@ comments: false
 	- [What is software engineering?](#what-is-software-engineering)
 	- [Why it is needed?](#why-it-is-needed)
 	- [4C in Software Engineering](#4c-in-software-engineering)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	- [Principles of SE](#principles-of-se)
+	
 ## What is software engineering?
 ---
 Software is a computer programs and associated documentation.(e.g. install manual, user manual, develop document, etc.) Unlike other product making process, software is invisible, more complex, and update-able. Also, it cannot be fully automated, so software developers need to set a develop pattern for more efficient developing.
@@ -67,10 +66,14 @@ There are four management in software engineering.
 
 
 
-## Link-to-Chapter4  
+## Principles of SE
 ---
-Chapter4에 관한 내용을 여기다가 적습니다.  
+- Rigor and Formality : Software is a program made by creative, engineering activity of programmer's experience and knowledge. Software developing must be get in time and cost, and that program must be understood on same meaning by everyone.
+- Separation of concerns : Software developing is very complex, so it is need to be divided into many simple problems. For example, software developing process can be divided into Requirement analysis, Design, Implementation and Testing. Another example is software testing process, it can be divided into unit test, integrated test, and system test.
+- Modularity : Program can be assembled of the pieces of individual features. It is helpful for readability and minimum side effect for change program.
+- Abstraction : Show important aspect of features and hide detailed implementation. It is better for understand program directly and show the interest.
+- Anticipation of changes : Changing software is inevitable. So developers must be ready for change by, for example, modulation.
+- Generality : Software should be operated by variety of platform, system environment, users, etc. It should not depend on specific hardware.
+- Incrementality : Software cannot be made at one time. Many developers should make small program repeatly to increase that size.
+- Documentation : The information of software should be wrote in detail and architecture to help team members for effective developing and to notice updated features.
 
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
