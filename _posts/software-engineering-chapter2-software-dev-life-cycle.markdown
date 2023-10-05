@@ -173,7 +173,7 @@ Let me introduce some famous software process model :
     - Deciding as Late as Possible
     - Delivering as Fast as Possible
     - Empowering the Team
-    - Build Quality In
+    - Build Quality In : build the environment for easy integration.
     - Optimize the Whole
 
 
