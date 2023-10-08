@@ -132,7 +132,7 @@ If X is n times faster than Y, then :
 Simple example : If computer A runs a program in 10 seconds and computer B runs the same program in 15 seconds, how much faster A than B?
 Answer : We know that A is n times faster than B if
 
-<img src="C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20230919113907506.png" alt="image-20230919113907506" style="zoom:50%;" />
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/1b8ee83c-0f8f-4018-a4fc-c77b40a6c326" alt="image-20230919113907506" style="zoom:50%;" />
 
 The performance ratio is 15 / 10 = 1.5, so, <u>A is 1.5 times faster than B.</u>
 
@@ -178,11 +178,11 @@ Answer :
 
 Simple example : One program is alternatively compiled, result n two sequences of different code, using instructions in classes A, B, C. Calculate Average CPI on sequence 1 and sequence 2.
 
-![image-20230926101841261](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20230926101841261.png)
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/735ab996-b4d3-4a99-a830-0bd6c29154b7)
 
 Answer : 
 
-![image-20230926101921475](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20230926101921475.png)
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/9029c916-daa3-420a-84c6-acbe54524d97)
 
 - Finally, the basic performance of CPU equation is then
 
