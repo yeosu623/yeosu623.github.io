@@ -103,11 +103,11 @@ OK, let's see these operator one by one with this example Entity-Relation Diagra
 
   This is the concept of select algebra. You can use select algebra to get the row line of data.
 
-  ![image-20231008174349992](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008174349992.png)
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/b9c1571e-171f-4785-a7fc-faa0e3974779)
 
 - Project : Create new relation with attribute A1, A2, ..., Ar from relation r.
 
-  ![image-20231008174800107](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008174800107.png)
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/0f764176-d0a3-481f-aa07-ec5f5d2f32a4)
 
   Example : Account Number and Balance from Account table?
 
@@ -149,7 +149,7 @@ OK, let's see these operator one by one with this example Entity-Relation Diagra
 
 - Cartesian Product : Create new relation that all possible combinations with relation r and s. This is used for connect two relations that both has same attribute.
 
-  ![image-20231008180104169](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008180104169.png)
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/6a1e1a32-9e89-446b-b755-2131612cf75e)
 
   Example : All customer's name who borrowed from "Perryridge" branch?
 
@@ -176,11 +176,11 @@ OK, let's see these operator one by one with this example Entity-Relation Diagra
 
     Example : The bank which customers are depositing living in Harrison?
 
-    ![image-20231008202921017](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008202921017.png)
+    ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/afcb0dce-cf90-4866-9dc6-239647df65f7)
 
     Example : Find all customers who have both a loan and an account.
 
-    ![image-20231008202945390](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008202945390.png)
+    ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/ad63d429-7ddd-45cb-9ea3-c5c819c6a617)
 
     Below is the concept of Natural Join. You can find that Natural Join is similar on Cartesian Product with no duplicate values.
 
@@ -188,7 +188,7 @@ OK, let's see these operator one by one with this example Entity-Relation Diagra
 
   - Theta Join : The natural join with conditional operator.
 
-    ![image-20231008203419413](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008203419413.png)
+    ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/77345194-57fa-4a52-ad84-79ebe895f9b2)
 
   - Equi Join : The theta join which conditional operator is "=".
 
@@ -198,7 +198,7 @@ OK, let's see these operator one by one with this example Entity-Relation Diagra
 
     - There are two relations : loan and borrower. I will combine these two relations with an one.
 
-      ![image-20231008204028288](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008204028288.png)
+      ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/3915c53a-8d74-43b6-9a0a-834913a99b75)
 
     - Inner Join(Natural Join) results : 
 
@@ -210,11 +210,11 @@ OK, let's see these operator one by one with this example Entity-Relation Diagra
 
     - Right Outer Join results :
 
-      ![image-20231008204227339](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008204227339.png)
+      ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/238fbd12-1bfd-4ecc-ac79-c9c4f8ef216a)
 
     - Full Outer Join results : 
 
-      ![image-20231008204241221](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008204241221.png)
+      ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/09817dbc-f85c-46a3-be81-cb56abcb18ff)
 
 - Division : Used for "For all" query. Get all records which relation s exists on relation r.
 
@@ -222,7 +222,7 @@ OK, let's see these operator one by one with this example Entity-Relation Diagra
 
   Example : All customer's name who have accounts from all "Brooklyn" Banks.
 
-  ![image-20231008204536802](C:\Users\yeosu\AppData\Roaming\Typora\typora-user-images\image-20231008204536802.png)
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/4394d063-e0f1-4d09-bbdf-1039194bd257)
 
   Below is the concept of division algebra. You can easily understand with these picture.
 
