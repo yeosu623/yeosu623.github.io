@@ -14,9 +14,7 @@ comments: false
 	- [What is software process model?](#what-is-software-process-model)
 	- [Software process model](#software-process-model)
 	- [Types of software process model](#types-of-software-process-model)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	
 ## What is software process model?
 ---
 In 1988, one of the legendary software developer Boehm says "determines the order of stages involved in SW development and evolution, and to establish the **transition criteria** for progressing one stage to the next. These include completion criteria for the current stage plus choice criteria and entrance for the next stage."
@@ -176,14 +174,18 @@ Let me introduce some famous software process model :
     - Build Quality In : build the environment for easy integration.
     - Optimize the Whole
 
+- DevOps : While agile development model goes trend for developing in 2000s, it helps for making larger and bigger software. But in late 2000s, live-service platform showed on the world, there are conflict on operating; Agile model only takes on developing, not to takes on operating.
+
+  Development activity always takes new technology, changes, and fast-developing, while Operating activity need to stable, no error, and fast-response for service.
+
+  DevOps does Development and Operation repeatly for software. By combining these activities, this model removes the cons for both development and operation each other.
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/e0006f02-90b3-4c1c-a1f5-1e091dd29db7)
+
+  DevOps does
+
+  - Continuous Integration and Continuous Deployment(CI and CD) : Each teams makes small results to the server and integrate it on the server everyday. Right integrated components takes testing process, then deploy for users.
+  - Automation : Automation environment is needed to quick and constant fix errors. It means operating is considered while developing.
 
 
 
-
-## Link-to-Chapter4  
----
-Chapter4에 관한 내용을 여기다가 적습니다.  
-
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
