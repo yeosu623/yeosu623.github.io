@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[OTHER]October 2023 What I curious"
+title: "[OTHERS]October 2023 What I curious"
 subtitle: "october 2023 what i curious"
-categories: other
-tags: other what i curious
+categories: others
+tags: others what i curious
 comments: false
 ---
 
