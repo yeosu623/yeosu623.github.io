@@ -16,4 +16,5 @@ comments: false
 ---
 - 2023-10-11 : [history of C](https://en.wikipedia.org/wiki/C_(programming_language))
 - 2023-10-12 : [PDP-11](https://en.wikipedia.org/wiki/PDP-11)
+- 2023-10-13 : [Unix](https://en.wikipedia.org/wiki/Unix)
 - 
