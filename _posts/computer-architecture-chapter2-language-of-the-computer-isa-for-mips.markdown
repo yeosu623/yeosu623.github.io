@@ -16,6 +16,9 @@ comments: false
 	- [MIPS Arithmetic Instructions](#mips-arithmetic-instructions)
 	- [MIPS Instruction Fields](#mips-instruction-fields)
 	- [MIPS Register File](#mips-register-file)
+  - [MIPS Data Types](#mips-data-types)
+  - [Dealing with Constants](#dealing-with-constants)
+  - [Shift Operations](#shift-operations)
   
 ## Instruction Set
 ---
@@ -187,4 +190,106 @@ sub $s2, $t0, $s1  # A[i] - b
 
 
 
-(25 페이지까지 함.)
+## MIPS DATA TYPES
+
+---
+
+Basically, there are some types to explain the architecture :
+
+- 4 bits is a nibble
+- 8 bits is a byte
+- 16 bits is a half-word
+- 32 bits is a word
+- 64 bits is a double-word
+
+MIPS use byte type(8 bits) to store data, use ASCII to decoded to character, and use 2's complement to represent integer.
+
+Also, MIPS aligned data as word type(32 bits).
+
+And, MIPS use **Big Endian** to store data as byte. Big Endian store data from lower address to higher address, and Little Endian store data from higher address to lower address.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/0f57d1ca-33dd-4988-ac85-b57b50f2140c)
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/bfa3d8c7-068b-4653-ae60-57a43eb44748)
+
+Loading and Storing data as byte in the instruction field, MIPS use I format to operate it.
+
+When a byte(8 bits) get loaded and stored,
+
+- load byte places one byte from memory to the **rightmost 8 bits** of the destination register.
+
+  If other bits remain in the register, **zero-extends** it and loads it into the register. As MIPS use 2's complement, **sign-extends** to remaining bits for minus integer.
+
+- Store byte takes one byte from the **rightmost 8 bits** of a register and writes it to a byte in memory.
+
+  If other bits remain in the memory word, store byte leaves the other bits in the memory word **intact**.(leaving the other bytes in the memory word unchanged)
+
+When a half word(16 bits) get loaded and stored,
+
+- Load byte process is same when a byte get loaded, only difference is 8 bits to 16 bits.
+- Store byte is too.
+
+
+
+## Dealing with Constants
+
+---
+
+Small constants are used quite frequently in a common programs. May 50% of operands in many common programs.
+
+```C
+A = A + 5;
+B = B + 1;
+C = C - 18;
+```
+
+There are some solutions to solve this issue :
+
+1. Put "typical constants" in memory and load them.
+2. Create hard-wired registers (like $zero) for constants like 1, 2, 4, 10, ...
+3. Include constants inside arithmetic instructions.
+
+What is the best solution? 
+
+1. Load data from memory is slow, so solution 1 is not good.
+2. Load data from register is faster than memory. So solution 2 might be good. But...
+3. It is the fastest way to operate arithmetic instructions, because instruction has constant so load process isn't needed.
+
+So, MIPS architecture select solution 3 to solve this issue. Therefore, MIPS offer **immediate instructions** for solution 3 :
+```assembly
+addi $s3, $s3, 4   #$s3 = $s3 + 4
+slti $t0, $s2, 15
+# "Set less than" command.
+# $t0 = 1 if $s2 < 15
+```
+
+But, how about larger constants? When there are 32 bit constant to load into a register, we must use two instructions (lui + ori).
+
+- **lui** : "load upper immediate" instruction to store higher order bits.
+
+  ```assembly
+  lui $t0, 1111111111111111
+  ```
+
+- Then, must get the lower order bits right, use **ori** instruction.
+
+  ```assembly
+  ori $t0, $t0, 0000000000000000
+  ```
+
+  Finally, we can get 1111111111111111 0000000000000000 within a register.
+
+
+
+## Shift Operations
+
+---
+
+There are shamt(shift amount) section in R-type format. What does it?
+
+Shift operation is used for packing and unpacking 8-bit char/number/data into 32-bit words.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/d85b5ae7-f7f4-4d25-ba79-56803809097d)
+
+Note that empty bit space after shift operation is filled with zero.
+
