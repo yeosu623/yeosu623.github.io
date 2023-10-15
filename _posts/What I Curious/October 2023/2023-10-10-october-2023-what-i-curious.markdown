@@ -19,4 +19,5 @@ comments: false
 - 2023-10-13 : [Unix](https://en.wikipedia.org/wiki/Unix)
 - 2023-10-14 : [AT&T Corporation](https://en.wikipedia.org/wiki/AT%26T_Corporation)
 - 2023-10-15: [Linux](https://en.wikipedia.org/wiki/Linux)
+- 2023-10-16: [GNU Project](https://en.wikipedia.org/wiki/GNU_Project)
 - 
