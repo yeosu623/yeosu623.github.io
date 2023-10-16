@@ -19,6 +19,9 @@ comments: false
   - [MIPS Data Types](#mips-data-types)
   - [Dealing with Constants](#dealing-with-constants)
   - [Shift Operations](#shift-operations)
+  - [Logical Operation](#logical-operation)
+  - [Decision Making](#decision-making)
+  - [Compiling While Loops](#compiling-while-loops)
   
 ## Instruction Set
 ---
@@ -289,7 +292,126 @@ There are shamt(shift amount) section in R-type format. What does it?
 
 Shift operation is used for packing and unpacking 8-bit char/number/data into 32-bit words.
 
+- Below is the logical operation commands.
+
 ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/d85b5ae7-f7f4-4d25-ba79-56803809097d)
 
-Note that empty bit space after shift operation is filled with zero.
+Note that the empty bit space after shift operation is filled with zero.
+
+
+
+- An arithmetic shift(`sra`) maintain the arithmetic correctness of the shifted value. A <u>shifted right</u> one bit should be <u>1/2</u> of tis original value, and a number <u>shifted left</u> should be <u>2 times</u> its original value. 
+
+  `sra` uses the most significant bit (sign bit) as the bit shifted in. There is no need for a `sla`, because `sll` works for arithmetic left shifts.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/098add25-88e7-4698-809e-47dc304719a5)
+
+
+
+## Logical Operation
+
+---
+
+- There are a number of **bit-wise** logical operations in the MIPS ISA.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/adaccd73-05f4-47b1-9da5-820c72d79af7)
+
+
+
+- AND operation is used to mask bits in a word. 
+
+  It select some bits and clear others to 0 for mask.
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/8e48db77-c5e0-4e87-810c-e92372936ad5)
+
+- OR operation is used to include bits in a word. 
+
+  It set some bits to 1, leave others unchanged.
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/b7eebc47-cf64-405d-a3bd-729dce8bdf00)
+
+- NOT operation is sued to invert bits in a word. Also, NOT operation is used to implement NOR. Note that there are NOR operation in MIPS instead of NOT.
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/ec589471-41e5-4b2b-948b-44a4a374f0ee)
+
+
+
+## Decision Making
+
+---
+
+It is alternative of the control flow like if statement.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/28785727-bf8e-4b60-b4af-d4ac9fc7e371)
+
+Note that opposite condition is used in assembly language. if you check equal for some variable, you should bne(branch not equal) keyword to make the decision.
+
+
+
+bne/beq uses I format instruction.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/4afbf1ae-9312-4582-9b3d-d00369450b04)
+
+offset field is used to various uses,
+
+- Memory address offset for lw & sw
+- Immediate constant value(which is contained in instruction itself)
+- Branch offset for target (branch distance)
+
+Also, these 3 cases are used for sign extension.
+
+
+
+In this case, it is used with the register and add its value with 16-bit offset (branch distance).
+
+The register is named as **Instruction Address Register**(i.e., **PC register**), its use is automatically implied by instruction. PC gets updated (PC+4) during the fetch cycle so that it holds the address of the next instruction.
+
+The branch distance has limit between -2^15 to 2^15+1 instructions (**word, not byte!!**) from the branch instruction. It is made by concatenating two low-order zeros to make it a word address, and then sign-extending with those 18 bits.
+
+However, is it necessary for concatenating two lower order zeros? Why not just store the word offset in the 16 bit immediate field? If two low order zeros does not to be concatenated, would limit the branch distance to -2^13 to 2^13+1, so it is necessary to extend more branch distance size. Also, it doesn't make more complex for its circuit.
+
+
+
+From now, we have learned `beq, bne`, but what about other kinds of branches(e.g., branch-if-less-than)? For this, we need another instruction, `slt`.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/1df22842-45c5-4f29-9801-d2ac26be0863)
+
+There are alternative versions of `slt`.
+
+- Since constant operands are popular in comparisons, MIPS also has `slti`.
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/006c0383-373c-4d7c-a715-acb1b5965d8c)
+
+- We can use `slt, beq, bne` and the fixed value of 0 in register `$zero` to create other conditions. Note that blt, ble, bgt, bge is pseudo-branch instruction, not the real instruction.
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/b62ae3c2-98bf-47e8-a1f6-176d093e3ef0)
+
+  blt, ble, bgt, bge are not included in the ISA, because its too complicated. It would stretch the clock cycle time or it would take extra clock cycles per instruction.
+
+
+
+MIPS also has an **unconditional branch** instruction or **jump** instruction, `j`.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/247bb25d-c02d-4b99-92c2-e3758d106448)
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/5a908684-bebd-41b7-a50c-5ba4fb299d25)
+
+`j`, jump instruction use J format. How is the jump destination address specified?
+
+1. concatenating 00 as the 2 low-order bits to make it a word address.
+2. concatenating the upper 4 bits of the currently updated PC(i.e., PC+4) to 32-bits address.
+
+And, if the branch destination is further away than can be captured within 16 bits in I format, you can solve this by using J format unconditional branch, so branching can be much more far away.
+
+For example,
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/06a686f7-98e1-43c1-bfd5-0528d261897d)
+
+
+
+## Compiling While Loops
+
+---
+
+
 
