@@ -20,4 +20,5 @@ comments: false
 - 2023-10-14 : [AT&T Corporation](https://en.wikipedia.org/wiki/AT%26T_Corporation)
 - 2023-10-15: [Linux](https://en.wikipedia.org/wiki/Linux)
 - 2023-10-16: [GNU Project](https://en.wikipedia.org/wiki/GNU_Project)
+- 2023-10-17: [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS)
 - 
