@@ -14,9 +14,8 @@ comments: false
 	- [User Interfaces and Tools](#user-interfaces-and-tools)
 	- [Web Interfaces and Database](#web-interfaces-and-database)
 	- [The basic concept of Web](#the-basic-concept-of-web)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	- [Servlets and JSP](#servlets-and-jsp)
+	
 ## User Interfaces and Tools
 ---
 The layers about database appliance can be divided into :
@@ -54,12 +53,16 @@ Web browers is the standard of Database application these days, because it can s
 
 - Client-Side Scripting : The language that can be executed on client's web browser. The most famous language of it is **Javascript**. It helps to compose active web page, which has flexible UI, animation, etc.
 
+- HTTP(HyperText Transfer Protocol) is the protocol that can be used to connect within the Internet. As it doesn't save the data, Cookie and Session can be used to solve that issue.
 
 
-## Link-to-Chapter4  
+
+## Servlets and JSP
 ---
-Chapter4에 관한 내용을 여기다가 적습니다.  
+Servlets and JSP is a web programming technology to use database.
 
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
+- Java Servlets : A server side program that creates responses by HTTP request. Apache Tomcat is the most famous server to use Java Servlets.
+- Server-Side Scripting : Making a web page dynamically from a server to a browser. JSP, PHP can be used for that.
+
+
+
