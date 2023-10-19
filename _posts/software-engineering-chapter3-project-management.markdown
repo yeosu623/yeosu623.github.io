@@ -13,7 +13,7 @@ comments: false
 - Contents
 	- [Definition of Project Management](#definition-of-project-management)
 	- [Cost Estimation for Software](#cost-estimation-for-software)
-	- [Chapter3](#link-to-chapter3)
+	- [Scheduling](#scheduling)
 	- [Chapter4](#link-to-chapter4)
 	- [Chapter5](#link-to-chapter5)
   
@@ -91,11 +91,11 @@ So, how can estimate costs for software? There are some types to do that :
 
     That is all about getting TDEV value on COCOMO technique. But on real world, it is difficult to estimate LOC, and as the time pass, constant values need to be different to reflect on the real software developing process. So COCOMO is evolving on these days.
 
-  - Function Point(FP) : Estimate costs based on the amount of business functionality, not on LOC(Lines Of Codes).
+  - Function Point(FP) : Estimate costs based on the amount of business functionality, not on LOC(Lines Of Codes). Note that the coefficient can be changed in the future as the technology evolve.
 
-    Function Point is divided on..
+    Unadjusted Function Point(UFP) is divided on..
 
-    - Function Point = Data Functional Type + Transactional Function Type
+    - Unadjusted Function Point = Data Functional Type + Transactional Function Type
       - Data Functional Type = (numbers of ILF x 7.5) + (numbers of EIF x 5.4)
         - ILF : Internal Logical File. It is the object for inserting, modifying, deleting by users. Ex) Database Table, File in inner system, class
         - EIF : External Interface File. It is the object for referencing on target software. It's object is created from another software.
@@ -104,15 +104,36 @@ So, how can estimate costs for software? There are some types to do that :
         - EO : External Output. Show data through the arithmetic logic.
         - EQ : External inQurity. Search data from database and show for user.
 
+    After Unadjusted Function Point(UFP) is calculated, it is need to be adjusted.
     
+    - Development cost before adjustment is multiplied with UFP and Unit cost/UFP. In 2021, Unit cost/UFP is set as 553,114 won in Korea by The guide of SW business cost estimation.
+    
+    - Development cost after adjustment is formed by several affects.
+    
+      - Scale adjustment is the adjustment to apply the rate of development following by the business size has changed.
+    
+        The default formula is 0.4057 * (ln(FP) - 7.1978)^2 + 0.8878.
+    
+        In short, apply 1.2800 if FP is less than 500, and apply 1.1530 if FP is over 1.1530.
+    
+      - Adjustment by application type has some parts of it.
+    
+        - 'Connected by Another companies' Complexity Level. no connect is 0.88, 1~2 connect is 0.94, 3~5 is 1.00, 6~10 is 1.06, respectively.
+        - Performance level. no requirement is 0.91, some requirement is 0.95, requirement on peak time is 1.00, requirement on all time is 1.05, rigid requirement is 1.09, respectively.
+        - OS Compatibility. no requirement is 0.94, requirement on same OS is 1.00, requirement on similar OS is 1.06, requirement on foreign OS is 1.13, and rigid requirement is 1.19, respectively.
+        - Security. It has encryption, checking web security, secure coding, defend personal information, etc. 1 requirement is 0.97, 2 requirement is 1.00, 3 is 1.03, 4 is 1.06, over 5 is 1.08, respectively.
+    
+      - Finally, Development cost after adjustment is calculated as '(Development cost before adjustment) x (Scale adjustment) x (Connected by Another companies Complexity level) x (Performance level) x (Os Compatibility) x (Security)'. It is the final cost for the program.
 
 
 
-
-
-## Link-to-Chapter3  
+## Scheduling
 ---
-Chapter3에 관한 내용을 여기다가 적습니다.  
+
+
+
+
+
 
 ## Link-to-Chapter4  
 ---
