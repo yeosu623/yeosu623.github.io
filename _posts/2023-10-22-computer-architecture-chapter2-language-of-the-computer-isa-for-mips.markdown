@@ -22,6 +22,9 @@ comments: false
   - [Logical Operation](#logical-operation)
   - [Decision Making](#decision-making)
   - [Compiling While Loops](#compiling-while-loops)
+  - [Switch Statement](#switch-statement)
+  - [Procedure and Function](#procedure-and-function)
+  - [The structure of Memory](#the-structure-of-memory)
   
 ## Instruction Set
 ---
@@ -412,6 +415,130 @@ For example,
 ## Compiling While Loops
 
 ---
+
+Compile the C while loop to the assembly code, that is the combination of instructions what we've learned.
+
+Consider that where i is in $s0, j is in $s1, and k is in $s2. and C code is this :
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/9ecaeeb2-cf09-41a7-bfeb-96a503565b1c)
+
+Another example. Consider that where i is in $s3, k is in $s5, and the base address of the array *save* is in &s6.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/9e08a396-eb83-4d03-b112-419affac22b3)
+
+
+
+## Switch Statement
+
+---
+
+Then, how about the switch-case statement in C? MIPS ISA is ready for that by prepared **jr** instruction.
+
+```assembly
+jr $t1  #jump to register. go to address in $t1
+```
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/e9efdaed-4bc6-449a-927b-0238931bfcda)
+
+Consider this example. Assuming that k is in $s2 and three sequential words in memory starting at the address $t4 have the addresses of the labels L0, L1, and L2. Switch this C code to assembly code.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/3a9b4e32-2515-4e8d-8261-e643936e8666)
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/8e89c5bf-0c54-455d-8d14-55548a45a8cd)
+
+
+
+## Procedure and Function
+
+---
+
+Through this long article, we've learned how MIPS ISA converts C code to this own assembly code. Finally, we will see how the MIPS change C function to assembly code.
+
+Procedures (a.k.a. subroutines, functions) allow the programmer to structure programs. It makes easier to understand and debug, and allows code to be reused. Procedures also allow the programmer to concentrate on one portion of the code at a time. And, procedure parameters act as barriers between the procedure and the rest of the program and data.
+
+So, how MIPS makes procedure and function in assembly code? There are six steps in execution of procedure.
+
+1. **Caller** places parameters in a place where the **callee** can access them.
+   - $a0 - $a3 : four argument registers.
+2. **Caller** transfers **the control** to the **callee**.
+3. **Callee** acquires the storage resources needed.
+4. **Callee** performs the desired task.
+5. **Callee** places the result value in a place where the **caller** can access it.
+   - $v0 - $v1 : two value registers for result values
+6. **Callee** returns **the control** to the caller.
+   - $ra : one return address register to return to the point of origin.
+
+As **Caller** and **callee** concept are showed, we need to see MIPS registers again to solve the question : what "Preserved on call" means?
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/689d13e3-a050-4f82-85a8-7e26316a3fb0)
+
+If "Preserved on call" is **no**, that means MIPS does not have to save the previous value. If caller need the value after calling, the caller has to save that register. (So "caller-saved" is said as otherword.)
+
+If "Preserved on call" is **yes**, that means MIPS saves the value after calling. So, if callee want to use that registers during calling, the callee has to save the register. (So "callee-saved" is said as otherword.)
+
+
+
+So, how can we write assembly code for use procedure and function? We can use `jal` instruction for that.
+
+```assembly
+jal ProcedureAddress #jump and link.
+```
+
+`jal` instruction do **saves PC+4 in register $ra** to have a link to the next instruction for the procedure return, and **jumps** to ProcedureAddress.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/24512a54-6a51-464f-92dc-4342125030c8)
+
+And if the procedure ends inside the procedure, use `jr` instruction to return, like return command in C.
+
+
+
+Let's see the example. Assume that there are **gcd(i, j)** function, and we need to implement and use it as assembly code. How can we do this?
+
+1. Prepare argument. The **caller** puts the i and j in **$a0** and **$a1** and issues 
+
+   ```assembly
+   jal gcd ## jump to routine gcd
+   ```
+
+2. Then, the **callee** computes the GCD, puts the result in **$v0**, and returns control to the **caller** using `jr`.
+
+   ```assembly
+   gcd: ....  #code to compute gcd
+   	jr $ra #return
+   ```
+
+
+
+But you may still have the question : what if the callee needs to use more arguments or return value? For this, callee uses a stack memory, a last-in-first-out queue.
+
+<img width="187" alt="stack" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/533f6617-00e3-4390-93e2-d14fb2742bfb">
+
+One of the general registers, $sp($29), is used to address the stack(which grows from high address to low address.)
+
+- Add data onto the stack - push
+  - $sp = $sp - 4
+  - Push data on stack at new $sp.
+- Remove data from the stack - pop
+  - Pop data from stack at $sp
+  - $sp = $sp + 4
+
+But, this method use memory instead of only registers, so if the number of parameters is increased, execution time is also increased.
+
+
+
+## The structure of Memory
+
+---
+
+Finally, we will end this long journey by understand the structure of MIPS memory. Did you have the question about how the data and your source code can be saved at one space? Here are the answer :
+
+<img width="210" alt="memory" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/e3dc6441-3da8-4f69-9341-4614bbcaa269">
+
+MIPS memory has 3 types of memory : stack, heap, and static.
+
+- Stack memory saves variables and procedures. For example, variables, array, functions, etc.
+- Heap memory saves dynamic data. For example, dynamic array, linked list, etc.
+- Static memory saves static data, a special space that can access from everywhere during runtime. It is same as `static` keyword in C.
 
 
 
