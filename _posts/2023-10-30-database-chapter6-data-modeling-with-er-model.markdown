@@ -14,9 +14,8 @@ comments: false
 	- [The process to design the database](#the-process-to-design-the-database)
 	- [Example COMPANY Database](#example-company-database)
 	- [The concept of ER model](#the-concept-of-er-model)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	- [The consideration for ER model](#the-consideration-for-er-model)
+	
 ## The process to design the database
 ---
 The process takes **the conceptual design** to make the database.
@@ -52,6 +51,7 @@ This is the requirements for example company database.
 There are many concept to represent ER model.
 
 - Entity is the object or concept to present in DB.
+
 - Attribute is used to present the entity.
   - Simple/Composed Attribute : Cannot be divided into another attributes/or can.
   - Single/Multiple Attribute
@@ -82,14 +82,38 @@ There are many concept to represent ER model.
     - 1 and N show cardinality.
     - single line show total relationship, while double line show partial relationship.
 
-- 
+- Plus, there are the **Weak Entity Type** for special use. It is the entity that has no key attribute, contrary to the Strong Entity.
+
+  For example, Dependent(name, gender, birthdate) is the weak entity, because it has no unique attribute for key. To recognize weak entity uniquely, it should get key from other entity, called as Owner Entity Type.
+
+  The relationship that connected between weak entity and owner entity is called as "Identifying relationship".
+
+  The key that get from owner entity type is called as "Discriminator" or "Partial Key".
 
 
 
-## Link-to-Chapter4  
+After we added the entities, and next step is connect among entities with specific relationship.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/797d67c3-c3aa-4381-9ab6-434a28c454dd)
+
+Then the final ER Diagram is completed :
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/d1963700-04cf-40d6-9add-aae8c3a32ffe)
+
+
+
+## The consideration for ER model
 ---
-Chapter4에 관한 내용을 여기다가 적습니다.  
+There are the basic tip for make ER model.
 
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
+- The basic method for recognize entity, relation, attribute
+  - Entity : noun
+  - Relationship : verb
+  - Attribute : The noun for modifying entity
+- The basic tips
+  - Improving the prototype ER model is better than making ER model at once perfectly.
+  - When attribute is referenced by other entity, change it to relationship.
+  - When the attribute is showed by several entities, consider change it to entity, and vice versa.
+
+
+
