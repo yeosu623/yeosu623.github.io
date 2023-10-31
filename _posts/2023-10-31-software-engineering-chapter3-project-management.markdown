@@ -14,8 +14,8 @@ comments: false
 	- [Definition of Project Management](#definition-of-project-management)
 	- [Cost Estimation for Software](#cost-estimation-for-software)
 	- [Scheduling](#scheduling)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
+	- [Risk Analysis](#risk-analysis)
+	- [Project Organization](#project-organization)
   
 ## Definition of Project Management
 ---
@@ -130,15 +130,49 @@ So, how can estimate costs for software? There are some types to do that :
 ## Scheduling
 ---
 
+After estimate costs, it's time to schedule the project. That means spread out all the works and show it by relation and orders. Specifically to write the schedule, it need to be included ID, Tasks, Days, Predecessor, Workers(R&R - Roles and Responsibilities), Status, etc.
+
+WBS, Work Breakdown Structure, is the one for schedule the project. It is the layered structure divided by workouts for developing teams.
+
+To represent WBS,
+
+- Gantt chart(Time-Line Chart) : a type of bar chart that illustrates a project schedule, named after its inventor. Created by Henry Gantt.
+- PERT chart(Program Evaluation and Review Techniques chart) : a type of chart that illustrates the relationship of tasks. The tasks contain the brief explanation and the duration of task. Note that the longest duration to complete the task is said as Critical Path.
+
+The good points of WBS,
+
+- Good communication tool between users and developers
+- Good for visualization to project tasks, so it is useful for management.
+- Good for unambiguous R&R(Roles & Responsibility)
+- The basis for plan workers and a project.
+- The basis for cost estimation.
+- The standard for measuring and modifying one's performance.
 
 
 
 
-
-## Link-to-Chapter4  
+## Risk Analysis
 ---
-Chapter4에 관한 내용을 여기다가 적습니다.  
+There are four basic step to risk analysis : Risk Identification, Risk Analysis, Risk Planning, and Risk Monitoring.
 
-## Link-to-Chapter5  
+- Risk Identification : Literally, it is identify potential risks during the project. Remember the **<u>Brooks law : If the current project inputs new members for the project, the development duration can be more longer. Because they need to learn about the project, and communicate about it.</u>**
+- Risk Analysis : Analysis the possibility and the impact for risks one by one.
+- Risk Planning : Plan the solution when the risk is really happened.
+- Risk Monitoring : Monitoring if the risk plan is realistic, and if the risk is really happened during the project.
+
+
+
+## Project Organization
 ---
-Chapter5에 관한 내용을 여기다가 적습니다.  
+There are many roles for the project these days :
+
+- Project Manager(PM) : Manage the project overall.
+- Project Leader(PL) : Execute the project as the project leader.
+- Team Leader(TL) : Execute the project as the team leader, when the project has many teams.
+- Program Engineer(PE) : Developer.
+- Configuration Manager(CM) : Manage the prototype results and change requirements.
+- Quality Engineer(QE) : Check the results, review it, and test it.
+- Liaison Group : Communicate with business groups.
+
+
+
