@@ -14,9 +14,8 @@ comments: false
 	- [What is Extended ER Model?](#what-is-extended-er-model)
 	- [Subclass and Superclass](#subclass-and-superclass)
 	- [Specialization and Generalization](#specialization-and-generalization)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	- [Union Type](#union-type)
+	
 ## What is Extended ER Model?
 ---
 The Extended ER model or Enhanced ER model, EER, has more effective concept based on original ER model.
@@ -44,12 +43,9 @@ Generalization is the contract to specialization. It is merging subclass for sup
 
 
 
-
-
-## Link-to-Chapter4  
+## Union Type
 ---
-Chapter4에 관한 내용을 여기다가 적습니다.  
+Union type is grouping the individual entities. The difference point between union type and generalization is **inheritance**. The subclass of generalization get attributes of superclass, but union type does not inherit attributes of superclass.
 
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
+
+
