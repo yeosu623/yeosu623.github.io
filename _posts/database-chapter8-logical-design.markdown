@@ -12,11 +12,8 @@ comments: false
 
 - Contents
 	- [Change ER model into relationship model](#change-er-model-into-relationship-model)
-	- [Chapter2](#link-to-chapter2)
-	- [Chapter3](#link-to-chapter3)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	- [Change EER model into relationship model](#change-eer-model-into-relationship-model)
+	
 ## Change ER model into relationship model
 ---
 There are many consideration for changing ER model into relationship model. Here are 7 steps to do it :
@@ -73,6 +70,8 @@ There are 3 ways to change 1:1 relationship R with table S, T.
 - Merge as one table : merge S, T into one table. Only can do this when S, T table is completely attended. If this criteria doesn't satisfied, Null attribute is made.
 - Create relationship table R : get S, T's primary key as foreign key. The primary key on R is the key with completely attended table.
 
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/536a5fed-009b-4706-88b9-a1a76c0207c3)
+
 
 
 #### Step 4. Change binary 1:N relationship
@@ -80,6 +79,8 @@ There are 3 ways to change 1:1 relationship R with table S, T.
 When table S is on N relationship and table T is on 1 relationship,
 
 - get primary key on T within table S as foreign key.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/eeaf4c54-4762-47ee-b5ee-bf44faeee2ae)
 
 
 
@@ -90,11 +91,15 @@ When table S is on N relationship and table T is on 1 relationship,
   - table S's primary key is combined with two table's primary key.
   - When attributes on relationship is existed, get it on table S.
 
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/aee036bf-e84b-4516-92ff-a7a2b45eadf1)
+
 
 
 #### Step 6. Change multiple attributes
 
 - Create new table S with multiple attributes, A.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/a2baafb6-2dd1-4f5b-b822-b90659544358)
 
 
 
@@ -105,30 +110,27 @@ When table S is on N relationship and table T is on 1 relationship,
   - Save attributes on relationship on table S.
   - The primary key on S is composed foreign keys.
 
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/228f38af-1ebd-4de0-9f73-c7bdd0d79a34)
 
 
 
+So, here is the final results for that ER diagram.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/38e217bf-4fad-4835-b091-aa60e841ac44)
 
 
 
-
-
-
-
-
-
-## Link-to-Chapter2  
+## Change EER model into relationship model
 ---
-Chapter2에 관한 내용을 여기다가 적습니다.  
+After takes step 1 ~ step 7, 
 
-## Link-to-Chapter3  
----
-Chapter3에 관한 내용을 여기다가 적습니다.  
+#### Step 8. Change Specialization and Generalization
 
-## Link-to-Chapter4  
----
-Chapter4에 관한 내용을 여기다가 적습니다.  
+When there are superclass C = (k, a1, a2, ..., an) and the number of m subclasses {S1, ..., Sm}, and k means key and a1, a2... mean attribute1, attribute2...,
 
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
+There are four way to change their relationship.
+
+- 
+
+
+
