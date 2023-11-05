@@ -130,7 +130,54 @@ When there are superclass C = (k, a1, a2, ..., an) and the number of m subclasse
 
 There are four way to change their relationship.
 
-- 
+- Step 8A. Change Superclass and Subclasses table both.
+  - Create table L = (<u>k</u>, a1, a2, ..., an) for superclass C. k is stands for key.
+  - Create Li = (<u>k</u>, attributes of Si) for subclasses Si.
+- Step 8B. Change Subclasses only.
+  - Create table Li = (<u>k</u>, a1, a2, ..., an, attributes of Si) for subclasses Si.
+- Step 8C. Merge both classes into the one table, and add 1 attribute type
+  - Merge tables as the one table L = (k, a1, a2, ..., an, attributes of number of m subclasses, t)
+  - t : indicate subclass
+- Step 8D. Merge both classes into the one table, and add m attribute type
+  - Merge tables as the one table L = (k, a1, a2, ..., an, attributes of number of m subclasses, t1, ..., tm)
+  - ti : the boolean type. It is true if the record is in Si subclasses.
+  - Suitable for overlapping constraint
+
+
+
+Below is the example for changing specialization and generalization.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/d6a51baf-e75a-4bda-910f-b9d0dc05e01a)
+
+When Step 8A is applied for above example,
+
+EMPLOYEE(<u>SSN</u>, FName, MInit, LName, BirthDate, Address, JobType)
+
+SECRETARY(<u>SSN</u>, TypingSpeed)
+
+TECHNICIAN(<u>SSN</u>, TGrade)
+
+ENGINEER(<u>SSN</u>, EngType)
+
+
+
+When Step 8C is applied for above example,
+
+EMPLOYEE(<u>SSN</u>, FName, MInit, LName, BirthDate, Address, JobType, TypingSpeed, TGrade, EngType)
+
+
+
+#### Step 9. Change Union type
+
+This step has simple method : use surrogate key to merge superclasses.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/f157e5dc-d16a-496a-8e4f-22f4f8d639ff)
+
+For above example,
+
+OWNER(<u>Owner_id</u>)
+
+REGISTERED_VEHICLE(<u>Vehicle_id</u>, License_plate_number)
 
 
 
