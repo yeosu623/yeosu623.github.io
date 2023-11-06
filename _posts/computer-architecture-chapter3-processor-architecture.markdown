@@ -16,6 +16,10 @@ comments: false
 	- [Abstract Implementation View](#abstract-implementation-view)
 	- [Clocking Methodologies](#clocking-methodologies)
 	- [Datapath and Control for the Processor](#datapath-and-control-for-the-processor)
+	- [ALU Control Unit](#alu-control-unit)
+	- [Instruction Critical Paths](#instruction-critical-paths)
+	- [Pipelining](#pipelining)
+	- 
 
 
 
@@ -171,13 +175,91 @@ After see above consideration, we will see how the circuit can be implemented st
 
    ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/1dce4eaf-606b-4657-af96-5ac4d8156cc0)
 
-5. Add the control part.
+5. Add the control part. This selects the operations to perform (ALU, Register File and Memory read/write operation. etc...), and control the flow of data (by multiplexor inputs).
+
+   ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/cc3f9cf8-c7b2-4eff-9064-64ad020995e7)
+
+   To observe the formats,
+
+   - op field always bits 31-26
+   - Address of registers to be read are always specified by the rs field(bits 25-21) and rt field(bits 20-16) in R-type. For Load, read rs(memory) and write to rt. And for Store, read rt and write to rs(memory).
+   - Address of register to be written is in one of two places - in rd(bits 15-11) for R-type instructions, in rt(bits 20-16) for lw.
+   - offset for BEQ, Load, Store always in bits 15-0.
+
+   Apply these format, the circuit has some implementation. This is almost complete single cycle datapath circuit.
+
+   <img width="404" alt="control" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/170e9170-35af-4235-b764-e0b3f3100acd" style="zoom:150%;" >
+
+   And this circuit is single cycle datapath with control unit.
+
+   <img width="406" alt="control2" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/2e79de2f-44b9-4647-8a01-8b28c52ceeb0" style="zoom:150%;" >
+
+   Finally, this circuit is complete datapath with ALU control unit.
+
+   <img width="406" alt="complete" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/6924e927-2c7a-4a81-a144-4ca972c6cc46" style="zoom:150%;" >
 
 
 
-Continue on page 25...
+
+
+## ALU Control Unit
+
+---
+
+Let's explore ALU Control in detail.
+
+Controlling the ALU uses of multiple decoding levels. Main control unit generates the ALUOp bits (2bits) to ALU control, Therefore input 6 bit funct field and 2 bit ALUOp to get result of 4 bits ALUcontrol to ALU.
+
+<img width="372" alt="ALU" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/1f2ade68-60d9-4177-b56b-2738388712be" style="zoom:150%;" >
+
+Change it to ALU Control Truth Table to make ALU Control logic.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/567c82f5-2632-44d8-ad3b-7d1c43266aa9)
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/5470ea71-94eb-4489-a707-67241266e791)
 
 
 
+## Instruction Critical Paths
 
+---
+
+Before we see the pipelining instructions, let's see how the instruction can be divided.
+
+Generally, calculate cycle time takes 
+
+- Instruction and Data Memory : 4ns
+- ALU and adders : 2ns
+- Register File access(reads or writes) : 1ns
+- Ignore negligible delays(muxes, control unit, sign extend, PC access, sift left 2, wires)
+
+Consider these aspects, general instruction takes :
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/da6d52e1-ea79-44e8-a125-10f0c3d2298c)
+
+As we can see, each instructions have different times because they have their path for each. So if we want to operate them at the same time, the standard will be 12ns. But is it ideal?
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/ffcc2707-b25e-4560-b170-b05c7953b29d)
+
+In the single cycle implementation, the cycle time is set to the longest instruction. In above example, load instruction is the longest.
+
+Since the cycle time has to be long enough for the load instruction, it is too long for other instructions, so the last part of the cycle here is **wasted**.
+
+
+
+So, how can we make it faster? What if it starts fetching and executing the next instruction before the current one has completed? This named as **pipelining**, and most of all modern processors are pipelined for performance.
+
+CPU time is (Clock Per Instruction) x **(Clock Cycle Time) ** x (Instruction Count), and pipelining can reduce CC, the clock cycle time.
+
+Under ideal conditions and with a large number of instructions, the speedup from pipelining is approximately equal to the number of pipelined stages. For example, a five stage pipeline is nearly five times faster because the CC is nearly five times faster(cc is 1/n, n is #(pipeline stages)). So, if the pipeline length is reduced to 1/n, then speedup is n times.
+
+Another way to make processor faster is **Superscalar processing**. This means make multiple operating way for instructions. We will see this method later in this chapter.
+
+
+
+## Pipelining
+
+---
+
+continue on 44...
 
