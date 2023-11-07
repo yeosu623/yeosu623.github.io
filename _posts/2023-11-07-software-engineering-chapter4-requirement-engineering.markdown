@@ -13,10 +13,9 @@ comments: false
 - Contents
 	- [Understanding The Requirements](#understanding-the-requirements)
 	- [Requirements Engineering](#requirements-engineering)
-	- [Chapter3](#link-to-chapter3)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	- [Specification Qualities](#specification-qualities)
+	- [Nonfunctional Requirements](#nonfunctional-requirements)
+	
 ## Understanding The Requirements
 ---
 The ultimate purpose of software development is for satisfying users and clients with software. There are some aspects in detail :
@@ -69,20 +68,31 @@ More specifically,
 
 
 
-
-
-
-
-
-
-## Link-to-Chapter3  
+## Specification Qualities
 ---
-Chapter3에 관한 내용을 여기다가 적습니다.  
+There are some checklist for requirement specification.
 
-## Link-to-Chapter4  
----
-Chapter4에 관한 내용을 여기다가 적습니다.  
+- Clear and understandable
+- Unambiguous
+- Consistent : Is a specification has no conflict, non-matched, or duplicated requirement?
+- Complete : Is a specification doesn't omit content, not only the features, but also the performance or limitations?
+- Verifiable : Is a specification helps to verity clearly that the system satisfies the requirement?
+  - Wrong example : There will be no problem when a lot of person connect to our server.
+  - Good example : There will be no problem when 10,000 person connect to our server.
+- Easily changed : Is a specification can be easily changed? In other words, is the requirements is wrote independently?
+- Traceable : Is a specification helps to trace the specific error on the system?
 
-## Link-to-Chapter5  
+
+
+## Nonfunctional Requirements
 ---
-Chapter5에 관한 내용을 여기다가 적습니다.  
+These focuses on environment, constraint, and quality.
+
+- Environment : hardware spec.
+- Constraint : Software constraint. For example, this system must be developed with JAVA and be applied CBD developing method.
+- Quality : Reliability, Security, Performance, Safety.
+  - Reliability : trust to use the system. There is the term reliability rate, this means the percentage to guarantee the system operates perfectly.
+  - Security : secure the system and the data.
+  - Performance : This is not only operates the system perfectly, but also satisfy the customer's specific requirement. For example, searching books must be operated in 2 seconds.
+  - Safety : the system must be safe to use, especially on embedded system.
+
