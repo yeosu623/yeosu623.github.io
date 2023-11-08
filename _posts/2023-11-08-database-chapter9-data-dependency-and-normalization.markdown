@@ -15,8 +15,7 @@ comments: false
 	- [Decomposition](#decomposition)
 	- [Functional Dependency](#functional-dependency)
 	- [Normalization by Functional Dependency](#normalization-by-functional-dependency)
-	- [Chapter5](#link-to-chapter5)
-  
+	
 ## Possible problem for relational database
 ---
 When they relational database create, two general possible problem are occurred : Data duplication, and Cannot show the specific data.
@@ -165,16 +164,53 @@ Finally, Canonical Cover is A->B, B->C.
 
 ---
 
+Before to do actual normalization, let's see the conditions for normalization.
+
+For a good decomposition, it satisfy two conditions.
+
+- Lossless Join Decomposition : When there are R1 and R2 tables, this condition is satisfied when (R1 intersect R2) -> R1 or (R1 intersect R2) -> R2 is satisfied.
+- Dependency Preserving Decomposition
+  - When we need to check functional dependency and to do it by join operation, it is very confused.
+  - So, Dependency Preserving Decomposition is defined :
+    - When F is the set of functional dependency on table R
+    - R1, R2, ..., Rn is the decomposed on table R
+    - Fi is the set of functional dependency on table Ri
+    - And F' = F1 union F2 union ... union Fn.
+    - When F'+ = F+, the dependency preserving decomposition is satisfied.
 
 
 
+So, what is normalization, and why is it needed?
 
+Normalization is the process that classifying relations by some criteria. It should be done because some table is needed to decompose some problem relations, so normalization is the process that decomposition as no information loss, by lossless join decomposition and dependency preserving decomposition.
 
+But, normalization has multiple level and it should be done by proper level, because as the normalization is done more, the more tables is decomposed. This means that join operation should be done much more, so performance of DB is dramatically decreased.
 
+Here are multiple levels of normalization :
 
+- 1st Normal Form(1NF) : This is when all attributes has atomic value. In other word, all relations is formed by single attribute.
+- 2nd Normal Form(2NF) : 1NF has the problem that it has partial dependency. So, 2NF is that 1NF's all attributes besides primary key have dependency on the primary key.
+  - Dependency a->b satisfy one of them below.
+    - simple and single dependency
+    - a is super key of table R
+    - a doesn't included in any other candidate key
+    - b is included in primary key
+  - The method to do lossless join decomposition to transform into 2NF
+    - Suppose a->b, where a is included in P(the set of attributes included primary key), and b isn't included in P.
+    - Then, decompose R as R1 = (a,b) and R2 = (R - b).
+- 3rd Normal Form(3NF) : 2NF has the problem that it has transitive dependency. So, 3NF is that 2NF's all attributes besides primary key don't have transitive dependency on the primary key.
+  - Dependency a->b satisfy one of them below.
+    - simple and single dependency
+    - a is super key of table R
+    - b is included in primary key
+  - The method to do lossless join decomposition to transform into 3NF
+    - Suppose a->b, where a is not a super key for R and b is not included in the candidate key.
+    - Then, decompose R as R1 = (a,b) and R2 = (R - b).
+- Boyce-Codd Normal Form(BCNF) : 3NF has the problem that it has some attributes besides primary key has functional dependency for some of attributes of primary key. So, BCNF is that 3NF's all discriminator for function dependency transform as candidate key.
+  - Dependency a->b satisfy one of them below.
+    - simple and single dependency
+    - a is super key of table R
+  - The method to do lossless join decomposition to transform into BCNF
+    - Suppose non-trivial dependency a->b, where a is not a super key for R.
+    - Then, decompose R as R1 = (a,b) and R2 = (R - b)
 
-
-
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
