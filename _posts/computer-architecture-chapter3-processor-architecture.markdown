@@ -261,5 +261,17 @@ Another way to make processor faster is **Superscalar processing**. This means m
 
 ---
 
-continue on 44...
+To pipeline instruction, we need to know what we will do to. There are five stage of Load instruction :
+
+- IFetch : Instruction Fetch and Update PC
+- Dec : Instruction Decode and Registers Fetch
+- Exec : Execute R-type, calculate memory address
+- Mem : Read/Write the data from/to the Data Memory
+- WB : Write the result data into the register file.
+
+After pipeline the processor, the instructions is executed like below :
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/247b91a1-4cdd-4eb0-ae4a-808cb8995628)
+
+A good point for applying pipeline is improves through put, so total amount of work done in a given time. But, instruction latency is not reduced, because latency is execution time from the start of an instruction to its completion.
 
