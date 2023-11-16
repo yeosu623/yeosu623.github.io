@@ -25,7 +25,10 @@ Good software code has follow these rules :
 
 - Easy to read
 - Good comments on code
-- 
+- Simple structure for code
+- Flexible to change
+- Easy to maintain and reuse
+- Execute for the intended features correctly
 
 
 
