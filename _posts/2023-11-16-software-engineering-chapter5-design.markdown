@@ -92,11 +92,33 @@ Good design helps easy maintenance. It is strongly related on adaptability, whic
 
 ---
 
+There are some checklist for good design.
 
+- A design should exhibit a **hierarchical structure**.
+- A design should be **modular**.
+- A design should contain distinct and separable representation of data and procedure.
+- A design should lead to modules that exhibit independent functional characteristics.
+- A design should lead to interfaces that reduce the complexity of connections between modules and with the external environment.
 
 
 
 ## Software Design Methods
 
 ---
+
+Let's see the famous methods to design software.
+
+- **Structured Design (Data flow-oriented)** : Used in conjunction with Structured Analysis method. It shows overall system at glance with system structure, and it can be wrote with top-bottom way with data flow diagram(DFD).
+
+  Below figure is the DFD and Structured chart for the ATM example, respectively.
+
+  <img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/48b69311-71e4-4537-8a17-457767cd7c42" alt="image" style="zoom:80%;" />
+
+  <img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/cf0c522f-10f2-48fb-a2c1-b9ca450ab9db" alt="image" style="zoom:80%;" />
+
+- **Object-Oriented** : Transform the real world into many objects. Below is the Class diagram and Sequence diagram for the ATM example.
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/42c502ec-bb86-4537-b64a-824158fe942d)
+
+  ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/28b0df3c-0387-41a2-99e0-dc76061bd572)
 

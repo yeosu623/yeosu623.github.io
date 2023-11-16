@@ -35,15 +35,103 @@ There are two types of memory : volatile, non-volatile.
 
 Let's see these memories one by one.
 
-### Disk Storage
+### Disk Storage(HDD)
 
 It is non-volatile, rotating magnetic storage.
 
-(continue on page 7... insert image needed.)
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/172fbdec-2cf6-4077-b70e-19eb586ac30e)
+
+Each sectors records sector ID, constant size of data(different sizse of each sector), and Error correctiong code(ECC. Used to hide defects or errors).
+
+Access to a sector involves following overhead :
+
+- Queuing delay(scheduling delay), if other accesses are pending
+- Seeck : move the heads
+- Rotational latency
+- Data transfer
+- Plus, Any necessary controller overhead
 
 
 
+### Flash Storage(SSD, Solid-State Drive)
 
+It is a non-volatile semiconductor storage. It is 100x ~ 1000x faster than disk, and it is smaller, lower power required, and moer robust. But it is more expensive than HDD and DRAM.
+
+It can be made by two types:
+
+- NOR flash : bit cell like a NOR gate
+  - High speed memory
+  - Random read/write access
+  - Read/Write level : BYTE(like a DRAM)
+  - Used for instruction memory in embedded systems or firmware storage
+- NAND flash : bit cell like a NAND gate
+  - High density memory & cheaper per GB
+  - Random read/write access
+  - Read/Write level : PAGE (vs. Erase level : BLOCK)
+  - Used for data storage(USB memory, media storage, etc.)
+
+Flash memory has lots of characteristic :
+
+- Flash bits wears out after 1000's of accesses
+  - Life time is usually 10,000 ~ 100,000
+  - Not suitable for direct RAM or disk storage
+  - **Wear leveling** : remap data to less used blocks
+- Operation time of NAND flash memory : Asymmetric
+  - Read : 20us, Write : 200us, Erase : 1.5,s
+  - NOR flash is faster but it also has asymmetric operation time
+- Two types of NAND Flash (Page vs Block)
+  - Small block NAND Flash : 528byte (512byte page + 16byte spare area) * 32 = 1 block.
+  - Large block NAND Flash : 2112byte (2048bype page + 64byte spare are) * 64 = 1 block.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/06538593-dc70-4cd5-820f-8cc3606df4f2)
+
+By the way, what is **Wear Leveling** in SSD? It is the limited number of erase operations. Wear out starts from 1,000 or so, and lifetime is about 10,000 ~ 100,000.
+
+Maintains a wear leveling table, which contains the number of erases for each block. It has 3 types of Wear Level Policies in SSD.
+
+- Static Wear Leveling : Check all area including User data Blocks and free blocks. It doesn't includes OS area.
+- Dynamic Wear Leveling(Garbage Collection) : Check among "free blocks only". Choose minimun wear level block among free blocks. Note that source block is selected by Garbage Collection.
+- Global Wear Leveling : Wear Leveling among Bank level or Die level. It includes OS area.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/05a01d0a-3094-4832-94e0-b32f105f1c60)
+
+Another notable characteristic of SSD is **Erase-before-write**. In initial state of SSD, it can be written any 1/0 values to SSD cell. Once written, you can change 1->0, but can not change 0->1. So, we have to erase first before write new value. Erase operation makes all cells to 1 again (0xFFFF). So, we say program operation, not erase operation in SSD. Therefore, overwrite is impossible, instead erase and write.
+
+But, it makes too much overhead, because this method erase all pages in the whole block for one page write. So, the new method has come : **Out-place-Update**. This method is mark the page which has an old value as invalid and write a new value in a free page.
+
+<img width="308" alt="1" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/14765756-aebd-46df-830c-f80311e60bcd" style="zoom:150%;" >
+
+When there are no free page during Out-place-Update, SSD do Garbage Collection.
+
+It does that migrate valid pages to a free block, and then earse the block and make the block free.
+
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/0e90590e-d254-412c-9b80-a2368f6b6892" alt="image" style="zoom:80%;" />
+
+Garbage Collection Policies in SSD is this. Select minimum write overhead(migration cost) block. In other words, select the block which contains the most invalid pages.
+
+<img width="318" alt="2" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/8f2744d0-af5d-4161-9ac3-5ba9d4232d86" style="zoom:150%;" >
+
+Or, select a block which results in maximum free pages among all blocks for garbage collection.
+
+<img width="316" alt="3" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/a60b19ee-de00-4a76-885b-1d20bf19b5ce" style="zoom:150%;" >
+
+Another way to choose GC candidate is considering page access patterns(temporal locality). There are two types of page : hot page(frequency access) and cold page(infrequent access). If we select a hot paged block for garbage collection candidate, overall system performance could be downgraded. So we need to select a cold paged block for garbage collection candidate, and we can choose either a cold page count or a cold page ratio. We can choose either by simulating these.
+
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/a362dcb6-8a3b-4ad4-a173-c25c3322e80a" alt="image" style="zoom:80%;" />
+
+By the way, how SSD maps its address? As we saw above, Address mapping in SSD has to translate corresponding block and page, cascadingly.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/90eecc80-3ee1-487f-9921-060101ff9f33)
+
+So, how to use and manage the flash memory as a new storage system by Operating System, compared to traditional storages(HDD), concerning these unique feature of Flash Memory?
+
+We can think for that problem. Option 1 is that use file systems for flash memroy, like YAFFS, FJJS, etc. It can be used for light weight software layer for embedded systems.
+
+Option 2 is that use FTL(flash translation layer) to make flash memory as traditional HDD. Then, OS can utilize stabilized file systems above FTL. FGTL is embedded in products as a hardware, so in general, FTL exists in a software layer as a part of OS.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/6c5e8fb6-54a8-4a60-b22c-d1d110050318)
+
+Finally, let's see the one cell in SSD. The number of bit that can be stored in each cell : SLC(1 bit), MLC(2 bits,), and TLC(3 bits). As the number of bit is increased, it is increased density naturally, and decreased lifetime, because hard to control voltage level, results in high probability of error occurrence. But as the number of bit is increased, the storage of SSD is increased for same sized chip.
 
 
 
