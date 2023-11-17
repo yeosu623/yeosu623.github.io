@@ -14,9 +14,7 @@ comments: false
 	- [What is Physical Design?](#what-is-physical-design)
 	- [File Organization](#file-organization)
 	- [Design Access Method](#design-access-method)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	
 ## What is Physical Design?
 ---
 Physical Design for database is that design the architecture of database based on logical schema. It has the format of record, the order for saving, access directory, etc.
@@ -72,15 +70,3 @@ Here are some way to design with :
 - Clustering saves several related records with one space.
 
 
-
-
-
-
-
-## Link-to-Chapter4  
----
-Chapter4에 관한 내용을 여기다가 적습니다.  
-
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
