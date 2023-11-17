@@ -275,3 +275,38 @@ After pipeline the processor, the instructions is executed like below :
 
 A good point for applying pipeline is improves through put, so total amount of work done in a given time. But, instruction latency is not reduced, because latency is execution time from the start of an instruction to its completion.
 
+
+
+So, what makes it easy in our MIPS architecture to make a pipelined processor?
+
+Because MIPS composed as RICS features, such as...
+
+- all instructions are the same length (32 bits)
+- few instruction formats (three) with regularity across formats.
+- memory operations occur only in loads and stores
+- each instruction writes at most one result
+- operands must be aligned in memory so a single data transfer takes only one data memory access.
+
+And, below is the figure of MIPS datapath with each operation marked.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/4e7d2448-da5e-4e52-b796-f2f2a23a490c)
+
+We can see that state registers are inserted between the state(bar in the diagram), and the system clock is triggered to every sequential module as well as newly inserted stage register, except IM.
+
+PC can be thought of as a pipeline register,
+
+- the one that feeds IF stage of the pipeline.
+- Unlike all of the other pipeline registers, the PC is part of the visible architecture state. So, PC is included in programmer's model.
+
+
+
+And next, let's see now addition operations executed with state register.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/c47e89c3-4152-45d0-b884-2b7de0ee62c7)
+
+We can see that any information that is needed in a later pipe stage must be passed to that stage via a pipeline register. Register address(colored as GREEN) should continuously passed through the pipeline and feed back again.
+
+And, the only two data flows from right to left(color as PURPLE). Loaded data from DM to RF, and then select of the next value of PC, one input comes from the calculated branch address from the MEM stage.
+
+Later instructions in the pipeline can be influenced by these two reverse data movement. The first one(WB to ID stage for LD instruction) leads to **data hazards**, and the second one(MEM to IF for branch instruction) leads to **control hazards**. Because of these reverse movements, **HAZARDs** happen!! We will see these detail later.
+
