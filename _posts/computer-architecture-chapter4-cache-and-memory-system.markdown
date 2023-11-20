@@ -12,7 +12,7 @@ comments: false
 
 - Contents
 	- [Types of Memory](#types-of-memory)
-	- [Chapter2](#link-to-chapter2)
+	- [Memory Hierarchy](#memory-hierarchy)
 	- [Chapter3](#link-to-chapter3)
 	- [Chapter4](#link-to-chapter4)
 	- [Chapter5](#link-to-chapter5)
@@ -135,9 +135,63 @@ Finally, let's see the one cell in SSD. The number of bit that can be stored in 
 
 
 
-## Link-to-Chapter2  
+## Memory Hierarchy
 ---
-Chapter2에 관한 내용을 여기다가 적습니다.  
+The general facts that large memories are slow and fast memories are small. To overcome this, we need to implement good hierarchy and parallelism.
+
+There are two major memory performance metrics : **Latency and Bandwidth**.
+
+- Latency : Time to access one word.
+  - Access Time : time to take a read (or write) request. Similar to response time, but note that read access time and write access time can be different.
+  - Cycle Time : time between successive (read or write) requests. Usually cycle time is longer than access time.
+- Bandwidth : How much data can be supplied per time unit. It means that the width of the data channel * the rate at which it can be used.
+
+And before to see the memory hierarchy, let's see the important terminologies : 
+
+- Block (or line) : the minimum unit of information that is present (or not) in a cache.
+- Hit Rate : the fraction of memory accesses found in a level of the memory hierarchy.
+  - Hit Time : Time to access data for that level, which consists of "Time to determine hit/miss + Time to access the block".
+- Miss Rate : the fraction of memory accesses not found in a level of the memory hierarchy. That is "1 - (Hit Rate)".
+- Miss Penalty : time to replace a block in that level with the corresponding block from a lower level, which consists of "Time to access the block in the lower level + Time to transmit that block to the level that experienced the miss + Time to insert the block in that level + Time to pass the block to the requestor."
+
+So, there are two types of cache.
+
+- Inclusive Cache : Lower level of cache data is a subset of higher level of cache.
+
+  - Most Intel Processor uses this method.
+
+  - Pros : reduces average cache access time
+  - Cons : reduces cache space utilization
+
+- Exclusive Cache : Lower level of cache data is not a subset of higher level of cache.
+
+  - AMD K7 uses this method.
+
+  - Pros : Increases space utilization
+  - Cons : Increases average cache access time.
+
+So, how is the hierarchy managed? It depends between them.
+
+- Registers - Cache : Compiler, CPU
+- Cache - Main Memory : Cache controller hardware
+- Main memory - Disks : Operating System
+
+At first, we will see how Cache - Main Memory communicate each other.
+
+Imagine that inserting data x in a empty space of cache. Think about this questions.
+
+1. How do we find a empty space?
+2. How do we know if a data item we want is in the cache?
+
+Early engineers develops a **Direct mapped** method, that means each memory block is mapped to exactly one block in the cache. Therefore, lots of lower level blocks must share blocks in the cache.
+
+Cache uses **index and tag** to directly map address. Index use next 2 low order memory address bits, to determine which cache block (Use modulo operation.). And, the cache use tag to the high order 2 memory address bits to tell if the memory block is in the cache.
+
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/ae118fd6-042e-4cee-ae2a-1b74972804e0" alt="image" style="zoom:80%;" />
+
+
+
+
 
 ## Link-to-Chapter3  
 ---
