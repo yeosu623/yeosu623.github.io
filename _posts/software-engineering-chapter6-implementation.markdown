@@ -30,9 +30,21 @@ Good software code has follow these rules :
 - Easy to maintain and reuse
 - Execute for the intended features correctly
 
+Also, there are some advanced tips :
+
+- Readable is more important than optimize.
+- Build architecture first
+- Consider test coverage
+- Keep code simple and stupid
+- Use comment for secondary tool only
+- Don't trust refactoring much
+- Use automation tool if you can
+- Enjoy your habit
+- Learn new things on your free time
 
 
 
+(17 page 까지 함.)
 
 
 
