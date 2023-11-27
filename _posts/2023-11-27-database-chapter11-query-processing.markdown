@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Database]Chatper11. Query Processing"
+title: "[Database]Chapter11. Query Processing"
 subtitle: "query processing"
 categories: dev
 tags: database query processing
