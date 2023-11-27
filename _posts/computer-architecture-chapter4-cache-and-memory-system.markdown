@@ -13,9 +13,9 @@ comments: false
 - Contents
 	- [Types of Memory](#types-of-memory)
 	- [Memory Hierarchy](#memory-hierarchy)
-	- [Chapter3](#link-to-chapter3)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
+	- [Cache Field Sizes](#cache-field-sizes)
+	- [Handling Cache Hits](#handling-cache-hits)
+	- [System Bus between Cache and Memory interface](#system-bus-between-cache-and-memory-interface)
   
 ## Types of Memory
 ---
@@ -191,16 +191,124 @@ Cache uses **index and tag** to directly map address. Index use next 2 low order
 
 
 
-
-
-## Link-to-Chapter3  
+## Cache Field Sizes
 ---
-Chapter3에 관한 내용을 여기다가 적습니다.  
+It is the number of bits in a cache includes both the storage for data and for tags(not index!). Total cache size is data storage plus address storage.
 
-## Link-to-Chapter4  
----
-Chapter4에 관한 내용을 여기다가 적습니다.  
+In this chapter, we will assume 32-bit address with byte addressing.
 
-## Link-to-Chapter5  
+For a direct mapped cache, which is composed of 2^n blocks, n bits are used for the index.
+
+For a block size of 2^m words(2^(m+2) bytes), m bits are used to address the word within the block (block offset) and 2 bits are used to address the byte within the word(byte offset). 32 byte block means 3 bits are used to address a word and 2 bits are used to address a byte within the word. So, 32 byte block is 8 words (3 bits) * 4 byte for each word (2 bits).
+
+So, what is the size of the tag field? It can be
+
+`"32 - (n+m+2)"`
+
+`in other words, 32 - index bits - block offset - byte offset.`
+
+And, the total number of bits in a direct-mapped cache is then
+
+`2^n * (block size + tag field size + valid/dirty or any control field)`
+
+`in other words, 2^n * (data size + address size + control size).`
+
+
+
+## Handling Cache Hits
 ---
-Chapter5에 관한 내용을 여기다가 적습니다.  
+
+### Cache hits
+
+Read hits on cache(I cache and D cache, i.e. I$ and D$) is easy, because they have done when we want.
+
+But, Write hits(D cache only) is quite difficult : It can be either 'write through' or 'write back'.
+
+- Write through : require the cache and memory to be consistent.
+
+  It always write the data into both the cache block and the next level in the memory hierarchy. Write run at the speed of the next level in the memory hierarchy - so slow! - or can use a write buffer and stall only if the write buffer is full.
+
+  It can be used for simple hardware, which main memory is always up-to-date.
+
+- Write back : allow cache and memory to be inconsistent.
+
+  It write the data only into the cache block. It do the cache block to the next level in the memory hierarchy when that cache block is evicted.
+
+  It need a dirty bit for each data cache block to tell if it needs to be written back to memory when it is evicted - can also use a write buffer to help write of dirty blocks to lower level memory.
+
+  Write-back cache requires 2 cycles to write into the cache. In a write-back cache, because we cannot overwrite the block (since we may not have a most up-to-date backup copy anywhere), write-back requires two cycles (one to check for a hit, followed by one to actually do the write). If hit, just write. But if miss, replace the block of L1$ (this replaced L1$ line maybe most up-to-date copy and it is not reflected in L2$ yet, so if we just overwrite, then the data of L1$ line will be lost) and write back.
+
+By comparison, a write-through cache can always be done in 1 cycle, assuming there is room in the write buffer. Reading the tag and writing the data in parallel is possible. And although tag doesn't match, it just writes and generates a write miss to fetch the rest of that block from the next level in the hierarchy, but it eventually will be overwritten.
+
+
+
+### Cache misses
+
+There are 3 words(3 Cs) in this concept :
+
+- Compulsory (cold start or first reference) : First access to a block. If you are going to run millions of instruction, compulsory misses are insignificant.
+  - Solution : increase block size (but, it will increase miss penalty, also very large blocks could increase miss rate).
+- Capacity : Cache cannot contain all blocks accessed by the program.
+  - Solution : increase cache size (but it may increase access time and cost)
+- Conflict (collision) : Multiple memory locations mapped to the same cache location.
+  - Solution 1 : increase cache size.
+  - Solution 2 : increase associativity (but it may increase access time).
+
+We will consider single word blocks only here.
+
+When read misses in I$ and D$ occurred, these process happened :
+
+- stall the pipeline (stall by cache, not hazard)
+
+- fetch the block from the next level in the memory hierarchy,
+
+- insert it in the cache
+
+  - I$ : just insert (read only cache)
+  - D$ : have to consider 'write back' vs 'write through'
+
+  If write-back cache, may involve replacing a dirty block (requiring write operation to lower level memory. If clean, just insert.)
+
+  If write-through cache, just insert (lower memory is already up-to-date).
+
+- Then, send the requested word to the processor.
+
+- Finally, let the pipeline resume.
+
+When write misses in D$, it takes the same process when read misses occurred. But, how to insert that in the cache? There are two options.
+
+- Write allocate (aka Fetch on write) : Datum at the missed-write location is loaded to cache from memory, followed by a write-hit operation. Is this approach, write misses are similar to read-misses. (read missed block is always allocated in the cache.)
+
+  It do that write the word into the cache updating both the tag and data, no need to check for cache hit (because it is newly allocated as a correct one).
+
+- No-write allocate (aka Write-no-allocate) : Datum at the missed write location is not loaded to cache, and is written directly to the backing store.
+
+  It do that skip the cache write and just write the word to the write buffer (and eventually to the next memory level), no need to stall if the write buffer isn't full.
+
+Both write-through and write-back policies can use either of these write-miss policies, but usually they are paired.
+
+- Write-back cache uses write allocate, hoping for subsequent writes or reads to the same location, which is now cached.
+- Write-through cache uses no-write allocate. Here, subsequent writes have no advantage, since they still need to be written directly to the backing store.
+
+
+
+## System Bus between Cache and Memory Interface
+---
+We will see three types of bus like below figure.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/a5187273-7bb3-4f05-8f03-fa569a2873de)
+
+Let's see section a. One-word-wide memory organization.
+
+The off-chip interconnect and memory architecture can affect overall system performance in dramatic ways;
+
+- Assume that
+  - 1 memory bus clock cycle to send the address
+  - 15 memory bus clock cycles to get the 1st word in the block from DRAM (row + column cycle time), 5 memory bus clock cycles for 2nd, 3rd, 4th words (only column access time).
+  - 1 memory bus clock cycle to return data.
+- Cache and Memory Bus Bandwidth : the number of bytes accessed from memory and transferred to cache/CPU per memory bus clock cycle.
+
+
+
+(continue on page 83... end at 88.)
+
