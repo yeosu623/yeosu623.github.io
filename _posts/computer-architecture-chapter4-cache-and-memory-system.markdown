@@ -16,6 +16,9 @@ comments: false
 	- [Cache Field Sizes](#cache-field-sizes)
 	- [Handling Cache Hits](#handling-cache-hits)
 	- [System Bus between Cache and Memory interface](#system-bus-between-cache-and-memory-interface)
+  - [Measuring Cache Performance](#measuring-cache-performance)
+  - [Multilevel Cache](#multilevel-cache)
+  - 
   
 ## Types of Memory
 ---
@@ -310,5 +313,81 @@ The off-chip interconnect and memory architecture can affect overall system perf
 
 
 
-(continue on page 83... end at 88.)
+Section b. Wider memory, has the number of memory bus clock cycles to read DRAM is faster as the number of wider blocks.
+
+Section c. Interleaved Memory, has the number of cycles to return data word is faster as the number of memories.
+
+
+
+## Measuring Cache Performance
+
+---
+
+Assuming cache hit costs are included as part of the normal CPU execution cycle, than
+
+<center>
+    CPU time = IC x CPI x CC<br>
+    = IC x (CPI_ideal + Memory-stall cycles) x CC
+</center>
+
+Memory-stall cycles come from cache misses, and can be calculated as
+
+- Read-stall cycles = (reads/program x read miss rate x read miss penalty)
+- Write-stall cycles = (writes/program x write miss rate x write miss penalty)
+
+Than, what cache performance is affected? There are several reason.
+
+- Faster clock rate -> required #clocks increased
+- The memory speed can not be improved as fast as processor cycle time
+- When calculating CPI_stall, the cache miss penalty is measured in processor clock cycles
+- The lower the CPI_ideal, the more pronounced impact of cache memory stalls.
+
+A larger cache will have a longer access time. At some point, the increase in hit time for a larger cache will overcome the improvement in hit rate, leading to a decrease system performance in a result. Instead of using Hit Time, we use Average Memory Access Time(AMAT), that is the average to access memory considering both hits and misses.
+
+<center>
+    AMAT = Hit time + Miss rate x Miss penalty
+</center>
+
+In Summary, the performance has these relationship.
+
+- When CPU performance increased, Miss penalty becomes more significant.
+- Decreasing CPI makes greater proportion of time spent on memory stalls, that is relative impact of memory stall increases.
+- Increasing clock rate makes memory stalls account for more CPU cycles, that is relative impact of memory stall increases.
+- Can not neglect cache behavior when evaluating computer system performance.
+- Therefore, we need a policy to reduce miss rate for this memory stall.
+
+So, we need to reduce cache miss rates by **allowing more flexible block placement**.
+
+In a direct mapped cache, a memory block maps to exactly one cache block. At the other extreme, could allow a memory block to be mapped to any cache block(fully associative cache).
+
+A compromise is to divide the cache into sets each of which consists of n ways(n-way set associative). A memory block maps to a unique set (specified by the index field) and can be placed in any way of that set (so there are n choices). Block address is set by modulo operation by the number of sets in the cache.
+
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/055815e1-3496-4cb5-afba-52aeeff11dc0" alt="image" style="zoom:80%;" />
+
+But it seems that this method takes more time and more address memory than direct-mapped method. Therefore, why we need to use this method?
+
+Let's see how this method works. when a miss occurs, which way's block do we pick for replacement? Least Recently Used(LRU) algorithm, the block replaced is the one that has been unused for the longest time, must have hardware to keep track of when each way's block was used relative to the other blocks in the set. For 2-way set associative, takes one bit per set, so set the bit when a block is referenced (and reset the other way's bit). Therefore, the hit rate is increased, the miss rate is decreased.
+
+
+
+## Multilevel Cache
+
+---
+
+Multi-word blocks can result in **false sharing**, when two cores are modifying two different variables that happen to fall in the same cache block. This problem increases cache miss rates.
+
+So, we will use **multiple levels of cache** to solve this issue. With this, we can increase performance dramatically. Consider to design L1 and L2 caches, these are very different.
+
+- Primary cache(L1) should focus on minimizing hit time in support of a shorter clock cycle.
+- Secondary cache(L2) should focus on reducing miss rate to reduce the penalty of long main memory access time.
+
+The miss penalty of the L1 cache is significantly reduced by the presence of an L2 cache - so L1 cache can be focused on smaller size, but check a higher miss rate. For the L2 cache, hit time is less important than miss rate. So, the L2 cache hit time determines L1 cache's miss penalty.
+
+
+
+
+
+
+
+
 

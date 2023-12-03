@@ -12,8 +12,8 @@ comments: false
 
 - Contents
 	- [What is implementation?](#what-is-implementation)
-	- [Chapter2](#link-to-chapter2)
-	- [Chapter3](#link-to-chapter3)
+	- [Coding Style](#coding-style)
+	- [Use Open Source?](#use-open-source)
 	- [Chapter4](#link-to-chapter4)
 	- [Chapter5](#link-to-chapter5)
   
@@ -44,17 +44,30 @@ Also, there are some advanced tips :
 
 
 
-(17 page 까지 함.)
+## Coding Style
 
-
-
-## Link-to-Chapter2  
 ---
-Chapter2에 관한 내용을 여기다가 적습니다.  
+Coding Conventions are a set of guidelines for a specific programming language that recommend programming style, practices, and methods for each aspect of a program written in that language. Standards may be enforced through code reviews or may simple be suggestions. For example, ISO/IEC 9899, gives a standard for C programming language.
 
-## Link-to-Chapter3  
+Coding Style is a set of rules or guidelines used when writing the source code for a computer program. It is often claimed that following a particular programming style will help programmers to read and understand source code conforming to the style, and help to avoid introducing errors. Below is the basic rules for programming.
+
+- Naming for variables and functions differently.
+- Writing source code less than 200 lines in one source file.
+- Writing single line of code less than 80 characters.
+- Writing function code less than 70 lines.
+- Align codes if a single sentences is written over 2 lines.
+- Align indent for same levels of code.
+- Comment the worker's name, initial date, purpose, etc.
+
+
+
+## Use Open Source?
 ---
-Chapter3에 관한 내용을 여기다가 적습니다.  
+
+
+
+
+
 
 ## Link-to-Chapter4  
 ---
