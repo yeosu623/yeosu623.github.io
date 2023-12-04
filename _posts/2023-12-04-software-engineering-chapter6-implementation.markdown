@@ -14,9 +14,7 @@ comments: false
 	- [What is implementation?](#what-is-implementation)
 	- [Coding Style](#coding-style)
 	- [Use Open Source?](#use-open-source)
-	- [Chapter4](#link-to-chapter4)
-	- [Chapter5](#link-to-chapter5)
-  
+	
 ## What is implementation?
 ---
 Implementation means writing code or programming. It is the final stage of design, and implementation includes writing code, debugging, merging, testing, etc. Note that as many member join to write implementation, each members should follow their rules about writing code.
@@ -64,15 +62,15 @@ Coding Style is a set of rules or guidelines used when writing the source code f
 ## Use Open Source?
 ---
 
+Many projects have dependency on open source there days. Before we use these open sources, we have to consider some aspects.
+
+- Check whether the system is suitable on open source.
+- Do our project based on open source, and implement what open source cannot give on our project.
+- Continuously testing during implementation, because merging open source can give you many unexpected errors.
+- Have to check the license. There are many variety of license, and check the condition to use the open source.
+- Consider to automation tools to manage our project.
+- Open source may have continuously updates, and we need to consider during doing project.
+- Open source may be difficult to use, so the project manager must give the guideline for team members.
 
 
 
-
-
-## Link-to-Chapter4  
----
-Chapter4에 관한 내용을 여기다가 적습니다.  
-
-## Link-to-Chapter5  
----
-Chapter5에 관한 내용을 여기다가 적습니다.  
