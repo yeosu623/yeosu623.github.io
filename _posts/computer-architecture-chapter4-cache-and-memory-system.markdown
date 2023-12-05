@@ -18,7 +18,7 @@ comments: false
 	- [System Bus between Cache and Memory interface](#system-bus-between-cache-and-memory-interface)
   - [Measuring Cache Performance](#measuring-cache-performance)
   - [Multilevel Cache](#multilevel-cache)
-  - 
+  - [Interaction between Main Memory and Disk](#interaction-between-main-memory-and-disk)
   
 ## Types of Memory
 ---
@@ -385,7 +385,39 @@ The miss penalty of the L1 cache is significantly reduced by the presence of an 
 
 
 
+## Interaction between Main Memory and Disk
 
+---
+
+From now on, let's see the interaction between main memory and disk. This is managed by operating system and TLB, the virtual to physical address mapping assisted by the hardware.
+
+Disk use main memory as a "cache" for secondary memory, by the principle of locality. Each program is compiled into its own address space, the virtual address space. During run-time, each virtual address must be translated to a physical address in main memory.
+
+A program's address space is divided into pages (all one fixed size) or segments (variable sizes). The starting location of each page (either in main memory or in disk (secondary memory)) is contained in the program's page table or segment table.
+
+<img width="292" alt="aa" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/746146e7-b2b5-4b6f-a20e-e77581a7960a" style="zoom:150%;" >
+
+To use a disk, a virtual address is translated tot a physical address by a combination of hardware and software. Each memory request requires an address translation form he virtual space to the physical space. Note that a virtual memory miss (when the page is not reside in physical memory) is called a **Page Fault**.
+
+<img src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/1a43a234-fc16-4c40-be61-1d1b9757e24e" alt="image" style="zoom:80%;" />
+
+So, how does the translation work? See below figure.
+
+<img width="320" alt="bb" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/0b713c33-fb3a-4a96-8b5c-617499539c9c" style="zoom:150%;" >
+
+We can see that CPU makes virtual page, and give it to page table. If V value is 1, this address is connected on main memory, and if V value if 0, this address is connected on disk storage. The translation is performed on the page table.
+
+But, this method takes an extra memory access to translate a VA(Virtual Address) to a PA(Physical Address), and it is very expensive on time and space aspect. To solve this issue, we will use the TLB (Translation Lookaside Buffer), a small "cache" that keeps track of recently used address mappings to avoid page table lookup. In a short word, TLB is a cache for a page table.
+
+<img width="323" alt="cc" src="https://github.com/yeosu623/yeosu623.github.io/assets/72304945/092ea244-cb09-4abd-aa46-709f83326352" style="zoom:150%;" >
+
+Just like other caches, the TLB can be organized as fully associative to make hit rate higher as it can be. TLB access time is typically smaller than cache access time, because TLBs are much smaller than caches.
+
+By the way, what occur when TLB miss? Is it merely "a TLB miss" or "a page fault"?
+
+If the page is already loaded into main memory, then the TLB miss can be handled by loading the translation information from the Page Table into the TLB. This takes 10's of cycles to find and load the translation info into the TLB.
+
+If the page is really not in main memory, then it's a page fault. This takes 1,000,000's of cycles to service a page fault. TLB misses are much more frequent than true page faults.
 
 
 
