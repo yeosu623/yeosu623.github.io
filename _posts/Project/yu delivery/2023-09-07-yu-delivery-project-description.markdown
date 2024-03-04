@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[SE Project]Project Plan"
+title: "[YU Delivery]Project Plan"
 subtitle: "project plan"
 categories: project
-tags: seproject waterfall
+tags: yudelivery waterfall
 comments: false
 ---
 

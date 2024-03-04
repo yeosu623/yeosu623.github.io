@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[SE Project]Software Requirements Specification"
+title: "[YU Delivery]Software Requirements Specification"
 subtitle: "software requirements specification"
 categories: project
-tags: seproject srs
+tags: yudelivery srs
 comments: false
 ---
 

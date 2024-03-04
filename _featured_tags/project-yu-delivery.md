@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: SE Project
-slug: seproject
+title: YU Delivery
+slug: yudelivery
 category: project
 menu: false
 order: 1
