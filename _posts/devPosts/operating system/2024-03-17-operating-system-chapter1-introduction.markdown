@@ -12,6 +12,13 @@ comments: false
 
 - Contents
 	- [What is an Operating System?](#what-is-an-operating-system)
+	- [How a computer starts?](#how-a-computer-starts)
+	- [Computer System Organization](#computer-system-organization)
+	- [Interrupt](#interrupt)
+	- [Storages on a Computer](#storages-on-a-computer)
+	- [Operating System Structure](#operating-system-structure)
+	- [Process Management](#process-management)
+	- [Memory Management](#memory-management)
 	
 ## What is an Operating System?
 ---
@@ -58,6 +65,12 @@ In this class, we will see how design and implement operating system.
   - Policy : Priority level decision
   - Mechanism : Detailed Control method for handling priority
 
+
+
+## How a Computer Starts?
+
+---
+
 Now, let's see how a computer start-up.
 
 - **Bootstrap program**, (or **Bootstrap loader**) is loaded at power-up or reboot.
@@ -69,6 +82,12 @@ Now, let's see how a computer start-up.
     - followed on BIOS -> boot sector -> OS location.
 
 ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/7954b263-8d02-4841-87e3-d7ee69bf7402)
+
+
+
+## Computer System Organization
+
+---
 
 In Computer System Organization,
 
@@ -85,6 +104,12 @@ In Computer System Organization,
     - Each device controller is in charge of a particular device type. 
     - Each device controller has usually a local buffer.
     - Device controller informs CPU that it has finished its operation by causing in **interrupt**.
+
+
+
+## Interrupt
+
+---
 
 By the way, what is an interrupt?
 
@@ -120,6 +145,92 @@ So, how handle interrupts?
 - Dedicated code segments determine what action should be taken for each type of interrupt -> called Interrupt Service (Handling) Routine, ISR.
 
 
+
+## Storages on a Computer
+
+---
+
+And then, let's see what storages is composed on a computer.
+
+- Main Memory : Large storage media that the CPU can access directly.
+- Secondary storage : extension of main memory that provides large nonvolatile storage capacity.
+- Magnetic disks - rigid metal or glass platters covered with magnetic recording material.
+  - Disk surface is logically divided into tracks, which are subdivided into sectors. The disk controller determines the logical interaction between the device and the computer.
+- Electronics disks - flash memory.
+
+Storage systems organized in hierarchy. That considered with speed, cost, size, and volatility.
+
+Also, storage system has its cache - copying information into faster storage system. Main memory can be viewed as a last cache for secondary storage.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/c6b27e70-2773-4e78-adc3-abe5eded0c45)
+
+
+
+## Operating System Structure
+
+---
+
+OS use **multi-programming** for efficiency.
+
+- Single user cannot keep CPU and I/O devices busy at all times.
+- Multi-programming organizes jobs (code and data), so CPU always has one to execute.
+- A subset (rest) of total jobs in system is kept in memory.
+- One job is selected and run via **job scheduling**.
+- When it has to wait (for example, I/O completion), OS switches to another job.
+- **Timesharing (Multitasking)** is logical extension in which CPU switches jobs, so frequently that users can interact with each job while it is running.
+  - **Interactive System**
+    - **Response time** should be short, typically less than 1 second.
+  - **Process** : Each user has at least one program executing in memory
+  - **CPU scheduling** : If several jobs ready at the same time
+  - **Swapping** : If processes don't fit in memory, moves them in and out to run.
+
+
+
+## Process Management
+
+---
+
+- A process is a program in execution. It is a unit of work within the system. Program is a **passive entity**, process is an **active entity**.
+  - One copy of program and several copies of process.
+- Process needs resources to accomplish its task.
+  - CPU, memory, I/O, files, initialization data. 
+- Process termination requires (total) reclaim of any reusable resources.
+- Typically system has many processes, some operating system is running parallelly on one or more CPUs.
+  - Parallelism by multiplexing the CPUs among the processes.
+
+The operating system is responsible for the following activities in connection with process management :
+
+- Creating and deleting both user and system processes
+- Suspending and resuming processes
+- Providing mechanisms for process synchronization
+- Providing mechanisms for process communication
+- Providing mechanisms for deadlock handling.
+
+
+
+## Memory Management
+
+---
+
+Finally, let's see how OS manage memory.
+
+- All **data** in memory before and after processing.
+- All instructions in memory in order to execute.
+- Memory management activities
+  - Keeping track of which parts of memory are currently being used and by whom.
+  - Deciding which processes (or parts thereof) and data to move into and out of memory.
+  - Allocating and deallocating memory space as needed.
+- OS provides uniform, logical view of information storage.
+  - **File** : Abstracts physical properties to logical storage unit 
+  - Each medium is controlled by device driver (disk drive, tape drive, etc.) They have varying properties : access speed, capacity, data-transfer rate, access method (sequential or random).
+- File-System management do:
+  - Files usually organized into directories.
+  - Access control on most systems to determine who can access what.
+  - OS activities include (in terms of file systems)
+    - Creating and deleting files and directories
+    - Primitives to manipulate files and directories
+    - Mapping files onto secondary storage
+    - Back-up files onto stable (non-volatile) storage media
 
 
 
