@@ -15,6 +15,8 @@ comments: false
 	- [Process Image in Memory](#process-image-in-memory)
 	- [Process State](#process-state)
 	- [Process Control Block](#process-control-block)
+	- [Process Scheduling Queues](#process-scheduling-queues)
+	- [Schedulers](#schedulers)
 	- 
 	
 ## Brief see for the process
@@ -97,5 +99,33 @@ These informations associated with each process :
 - Accounting information
 - I/O status information
 
+Process Control Block, PCB, is included in one process with many PCB.
 
+PCB uses for directing files, ordering several processes, handling CPU scheduling, etc.
+
+
+
+## Process Scheduling Queues
+
+---
+
+This has 3 types of queues. Processes migrate among the various queues.
+
+- Job queue : set of all processes in the system
+  - Processes may reside in disk or main memory
+- Ready queue : set of all processes residing in main memory, ready and waiting to execute.
+- Device queues : set of processes waiting for an I/O device
+
+
+
+## Schedulers
+
+---
+
+Schedulers also has 3 types.
+
+- Long-term scheduler : Job scheduler. Selects which processes should be brought into the ready queue. Ready queue contains all processes which reside in main memory. Also, the long-term scheduler controls the degree of multiprogramming, which means it control the number of processes in memory.
+- Short-term scheduler : CPU scheduler. Selects which process should be executed next and allocates CPU.
+- **Medium-term scheduler**
+  - Why that be made? : sometimes, it can be advantageous to remove processes from memory and thus **reduce the degree of multiprogramming**.
 
