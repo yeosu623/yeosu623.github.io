@@ -17,6 +17,8 @@ comments: false
 	- [Process Control Block](#process-control-block)
 	- [Process Scheduling Queues](#process-scheduling-queues)
 	- [Schedulers](#schedulers)
+	- [Context Switch](#context-switch)
+	- [Process Creation](#process-creation)
 	- 
 	
 ## Brief see for the process
@@ -128,4 +130,105 @@ Schedulers also has 3 types.
 - Short-term scheduler : CPU scheduler. Selects which process should be executed next and allocates CPU.
 - **Medium-term scheduler**
   - Why that be made? : sometimes, it can be advantageous to remove processes from memory and thus **reduce the degree of multiprogramming**.
+
+
+
+## Context Switch
+
+---
+
+When CPU switches to another process, the system must save the state of the old process and load the saved state for the new process.
+
+- System Context : Process data structure allocated by kernel. For example, PCB, Page/Segment Table, File table, etc.
+- Hardware Context : Register information such as Program counter, stack pointer, etc.
+- Memory Context : Memory space, a out image in disk.
+
+Context-switch time is purely overhead; The system does no useful work while switching. But sometimes this must be used for. Alternate method is 'get a long time slice to execute' to avoid context-switching, but it may take a longer time than that.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/315a3f84-4b43-449c-a08d-da18c537f89f)
+
+
+
+## Process Creation
+
+---
+
+Parent process create children processes, which, in turn create other processes, forming a tree of processes. So, resource sharing type in process hierarchy takes one of them below :
+
+- Parent and children share all resources (especially in UNIX).
+- Children share subset of parent's resources.
+- Parent and child share no resources.
+
+In execution, takes either of them.
+
+- Parent and children execute concurrently.
+- Parent waits until children terminate (especially in UNIX).
+
+In address space,
+
+- Child process duplicates parent process address space.
+- Child's program is loaded into its duplicated address space.
+
+Below figure is process creation diagram in UNIX environment.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/1d9db745-a684-4669-b7f2-83edaa02e86e)
+
+Let's see these commands one by one.
+
+- fork() system call
+  - Only way to increase the number of processes.
+  - Create a copy of itself - logical copy of parent.
+    - Copy a.out image 
+    - Copy kernel data structures
+  - All environment (in user mode) are inherited.
+    - Such as file offset, program counter, etc.
+  - Only PID differs, rest identical. Plus these may differs...
+    - Lock attribute such as file lock, memory lock
+    - Timer information for scheduler is reset for child
+  - No sharing of memory.
+  - In some systems, vfork() system call is provided. This is same as fork(), except the exclusion of memory space copy.
+
+Simple example : 
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/a6721e37-d802-4f51-a175-b467e78572cd)
+
+Answer : 
+
+Hello, I am child!
+
+Hello, I am parent!
+
+- exec() system call
+  - Retrieve a file from disk. 
+  - Overlay on old a.out image.
+  - Jump to start location.
+
+Simple example :
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/97a4e66b-8967-4773-807d-d0accb994aca)
+
+Answer :
+
+before executing ls -l
+
+0
+
+(Print end, because 'bin/ls' code take replace all main() code.)
+
+- wait() system call
+  - If Pa process invokes wait() -> then kernel block Pa.
+    - Until child terminates. 
+    - When child terminates, kernel wakes up the parent.
+    - Kernel puts the parent into ready queue
+    - Parent is dispatched later.
+  - wait() system call handles 3 return codes of child process.
+    - (1)PID, (2)exit status, and (3) the CPU usage.
+
+
+
+In summary, fork() can only create same process, but exec() can create different process. And, forking process does not terminated through fork, but execing process terminated through exec (parent process image is over-written). In UNIX, by combining fork and exec, different process can be created without any process termination.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/96569b90-a96c-4dac-80ee-e4e154cf884b)
+
+
 
