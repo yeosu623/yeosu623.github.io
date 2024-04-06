@@ -19,6 +19,11 @@ comments: false
 	- [Schedulers](#schedulers)
 	- [Context Switch](#context-switch)
 	- [Process Creation](#process-creation)
+	- (page ? ~ 74 did not wrote. Need to write them.)
+	- [First come First served Scheduling](#first-come-first-served-scheduling)
+	- [Shortest Job First Scheduling](#shortest-job-first-scheduling)
+	- [Priority Scheduling](#priority-scheduling)
+	- [Round Robin Scheduling](#round-robin-scheduling)
 	- 
 	
 ## Brief see for the process
@@ -229,6 +234,129 @@ before executing ls -l
 In summary, fork() can only create same process, but exec() can create different process. And, forking process does not terminated through fork, but execing process terminated through exec (parent process image is over-written). In UNIX, by combining fork and exec, different process can be created without any process termination.
 
 ![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/96569b90-a96c-4dac-80ee-e4e154cf884b)
+
+
+
+
+
+
+
+page ? ~ 74 did not wrote. Need to write it.
+
+
+
+
+
+## First Come First Served Scheduling
+
+---
+
+First-Come, First-Served (FCFS) Scheduling is implemented with one queue. It is known  as FIFO scheduling, and has the simplest scheme among other scheduling.
+
+- Processes dispatched according to arrival time
+- Non-preemption policy : Even IO burst, no more scheduling decision
+- Rarely used as primary scheduling algorithm
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/19e3a198-f816-4e38-8e26-a69b4f945d09)
+
+Suppose that the processes arrive in the order: P1, P2, and P3, and its burst time is 24, 3, 3, respectively. The Gantt Chart for the schedule is :
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/3699b90f-981b-4b3a-8103-66809d597f31)
+
+- Waiting time for P1 = 0, P2 = 24, and P3 = 27
+- Average waiting time : (0 + 24 + 27) / 3  = 17
+
+Another example, suppose that the processes arrive in the order : P2, P3, and P1. The Gantt Chart for the schedule is :
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/81137097-ca41-465e-bfe1-d5fa69e97903)
+
+- Waiting time for P1 = 6, P2 = 0, and P3 = 3
+- Average waiting time : (6 + 0 + 3) / 3 = 3
+
+That is much better than previous case. This is called of **"Convoy effect"**, which means that "short process behind long process". This effect can make a wide variation of average waiting time.
+
+
+
+## Shortest Job First Scheduling
+
+---
+
+Shortest-Job-First (SJF) Scheduling offsets the cons of the previous scheduling policy.
+
+This associate with each process length of its next CPU burst, and use these lengths to schedule the process with the shortest time.
+
+This has two variations :
+
+- non-preemptive : once CPU is given to the process, it cannot be preempted until completes its CPU burst.
+- preemptive : if a new process arrives with CPU burst length less than remaining time of current executing process, then preempt it. This scheme is known as the Shortest-Remaining-Time-First (SRTF).
+
+Consider this case. What is the average waiting time that using SJF (non-preemptive) scheduling policy?
+
+| Process | Arrival Time | Burst Time |
+| ------- | ------------ | ---------- |
+| P1      | 0.0          | 7          |
+| P2      | 2.0          | 4          |
+| P3      | 4.0          | 1          |
+| P4      | 5.0          | 4          |
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/32423de5-cd45-4a49-b670-cf6f3806b8ad)
+
+The average waiting time is : (0 + 6 + 3 + 7) / 4 = 4
+
+
+
+And, what is the average waiting time that using SJF (preemptive) scheduling policy, with above same case?
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/5caa49c8-8e3a-412e-920d-2793fef40c6d)
+
+The average waiting time is : (9 + 1 + 0 + 2) / 4 = 3
+
+
+
+This policy seems much better than previous thing. Let's see its pros and cons.
+
+- Pros
+  - SJF is optimal : gives minimum average waiting time for a given set of processes.
+- Cons
+  - Difficult in real world : how do we know next burst of CPU?
+
+To predict burst times, scientists make a thought that exponential average, which means that predicting next CPU burst based on previous CPU bursts with exponential average.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/8a9044f9-d428-4d9b-b7ae-90879a936c38)
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/1faf9cb1-fab4-4c3e-9208-29743be38c75)
+
+
+
+## Priority Scheduling
+
+---
+
+A priority number is associated with each process. So, the CPU can be allocated to the process with the highest priority, preemptive or non-preemptive. Also, SJF can be treated as a priority scheduling, where priority is the predicted next CPU burst time.
+
+However, this policy can cause **"Starvation"**, which means that low priority processes may never execute. So, some policy **"Aging"** these process. As time progresses, system increases the priority of the process.
+
+One of the priority scheduling with aging is called as **"Highest Response Ratio Next (HRRN) Scheduling"**.
+
+- Response ratio = (waiting time + required CPU time) / required CPU time
+- Waiting time increases response ratio
+- The impact of waiting time is different to each required CPU time
+  - Same waiting time vs. different required time, with respect to response ratio.
+  - Example : (5 + 2) / 2 = 3.5 vs. (5 + 10) / 10 = 1.5
+
+Plus, non-preemptive priority scheduling can cause **"Priority Inversion"**, so average waiting time may increase.
+
+
+
+## Round Robin Scheduling
+
+---
+
+Round Robin (RR) Scheduling is based on FIFO. Processes run only for a limited amount of time, called a time slice or time quantum. It is preemptible, and requires the system to maintain several processes in memory.
+
+![image](https://github.com/yeosu623/yeosu623.github.io/assets/72304945/86204692-9596-415e-a3d4-8af5bfcf895a)
+
+
 
 
 
