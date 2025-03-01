@@ -28,7 +28,7 @@ jobs:
         run: bundle exec jekyll build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2  # v3 -> v2로 변경
         with:
           path: '_site/'
 
