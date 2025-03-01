@@ -5,6 +5,10 @@ on:
     branches:
       - main  # 또는 master
 
+permissions:
+  id-token: write  # OIDC 토큰 발급을 위한 권한
+  contents: write  # GitHub Pages 배포를 위한 권한
+
 jobs:
   build:
     runs-on: ubuntu-latest
