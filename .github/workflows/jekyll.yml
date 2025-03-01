@@ -3,12 +3,11 @@ name: Deploy Jekyll to GitHub Pages
 on:
   push:
     branches:
-      - main  # 또는 master
+      - main  # or master
 
 permissions:
   id-token: write
   contents: write
-
 
 jobs:
   build:
