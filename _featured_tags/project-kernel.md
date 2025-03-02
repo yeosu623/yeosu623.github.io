@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: YU Delivery
-slug: yudelivery
+title: Kernel
+slug: kernel
 category: project
 menu: false
 order: 1

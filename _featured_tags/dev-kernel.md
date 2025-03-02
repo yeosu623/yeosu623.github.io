@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: Backend
-slug: backend
+title: Kernel
+slug: kernel
 category: dev
 menu: false
 order: 2

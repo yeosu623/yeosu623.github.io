@@ -4,5 +4,5 @@ title: Computer Architectrue
 slug: computerarchitecture
 category: dev
 menu: false
-order: 4
+order: 1
 ---
