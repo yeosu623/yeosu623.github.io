@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Kernel]Chapter0. 커널과 디바이스 드라이버"
+title: "[Kernel]커널과 디바이스 드라이버"
 subtitle: "kernel and device driver"
 categories: dev
 tags: kernel device driver
