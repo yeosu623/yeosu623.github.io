@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Kernel]Chapter0. 커널과 디바이스드라이버"
+title: "[Kernel]Chapter0. 커널과 디바이스 드라이버"
 subtitle: "kernel and device driver"
 categories: dev
 tags: kernel device driver
@@ -8,7 +8,7 @@ comments: false
 ---
 
 ## Introduction
-> 커널과 디바이스드라이버의 정의와 종류를 파악하고, 서로가 어떻게 상호작용하는지를 알아봅니다.
+> 커널과 디바이스 드라이버의 정의와 종류를 파악하고, 서로가 어떻게 상호작용하는지를 알아봅니다.
 
 - Contents
 	- [커널의 정의와 핵심 기능](#커널의-정의와-핵심-기능)
@@ -42,7 +42,7 @@ comments: false
 커널은 설계 철학과 구조에 따라 여러 유형으로 분류되며, 각 유형은 성능, 안정성, 확장성 측면에서 고유한 특성을 지닌다.
 
 - 모놀리딕 커널(Monolithic Kernel) : 메모리 관리, 파일 시스템, 장치 드라이버 등 모든 기능이 단일 커널 공간에 통합되어 있다.
-![](https://velog.velcdn.com/images/yeosu623/post/04c98645-44ab-447d-b6a4-13186e67a260/image.png)
+![](https://github.com/user-attachments/assets/82aee0e4-6eee-4806-b042-db80d7fdba70)
 
   - 장점: 시스템 호출이 직접적이어서 성능이 우수하다.
 
@@ -51,7 +51,7 @@ comments: false
   - 사례: 리눅스(Linux), 유닉스(Unix).
 
 - 마이크로커널(Microkernel) : 최소한의 핵심 기능(프로세스 통신, 기본 메모리 관리)만 커널에 포함하고, 파일 시스템, 드라이버 등은 사용자 공간에서 실행한다.
-![](https://velog.velcdn.com/images/yeosu623/post/0147a3f1-d4c8-455a-8f70-05339b5033ea/image.png)
+![](https://github.com/user-attachments/assets/4226e1eb-c272-47cb-b4ed-b5e898dcb8f3)
 
   - 장점: 모듈화로 인해 안정성이 높고, 유지보수 및 확장이 용이하다.
 
